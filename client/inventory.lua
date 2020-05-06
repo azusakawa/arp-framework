@@ -43,7 +43,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
         if IsControlJustPressed(1, 38) then
             RageUI.Visible(RMenu:Get('Intmenu', 'main'), not RageUI.Visible(RMenu:Get('Intmenu', 'main')))
-            TriggerServerEvent('ARP:GetPlayerInventory')
+            TriggerServerEvent('ARP:UpdateInventory', 'item', 1)
         end
     end
 end)
