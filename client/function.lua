@@ -38,10 +38,3 @@ RegisterNetEvent('ARP:Notify')
 AddEventHandler('ARP:Notify', function(text)  
     ARP.Notify(text)
 end)
-
-------------------------------------------------------------
--- 物品庫
-------------------------------------------------------------
-function ARP.GiveInventory(item)
-    TriggerServerEvent('ARP:UpdataInventory', tiem)
-end

@@ -3,31 +3,38 @@ local ARP = {}
 --------------------------------------------------------------------------------
 -- 獲得/更新 物品
 --------------------------------------------------------------------------------
-function ARP.UpdateInventory(item, count)
+function ARP.UpdateInventory(item)
     local source = source
-    MySQL.Async.fetchScalar('SELECT item FROM user_inventory WHERE identifier = @identifier', {
+    MySQL.Async.fetchAll('SELECT item FROM user_inventory WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source),
     }, function(result)
-        if result ~= item then
-            MySQL.Async.fetchScalar('INSERT INTO user_inventory (identifier, item, count) VALUES (@identifier, @item, @count)', {
-            ['@count'] = count,
-            ['@identifier'] = GetPlayerIdentifier(source),
-            ['@item'] = item,
-            })
-        else
-            MySQL.Async.execute('UPDATE user_inventory SET `count` = @count WHERE identifier = @identifier AND item = @item', {
-                ['@count'] = count,
+        local inventory = {}
+        local add = false
+
+        for i = 1, #result do
+            table.insert(inventory, result[i].item)
+        end
+
+        for _, v in pairs(inventory) do 
+            if v == item then
+                TriggerClientEvent('ARP:Notify', source, 'You have ~r~same~s~ item in your inventory')
+                add = true
+                break
+            end
+        end
+
+        if not add then
+            MySQL.Async.fetchScalar('INSERT INTO user_inventory (identifier, item) VALUES (@identifier, @item)', {
                 ['@identifier'] = GetPlayerIdentifier(source),
                 ['@item'] = item,
             })
         end
-        ARP.GetInventory()
     end)
 end
 
 RegisterServerEvent('ARP:UpdateInventory')
-AddEventHandler('ARP:UpdateInventory', function(item, count)
-    ARP.UpdateInventory(item, count)
+AddEventHandler('ARP:UpdateInventory', function(item)
+    ARP.UpdateInventory(item)
 end)
 
 --------------------------------------------------------------------------------
@@ -35,10 +42,12 @@ end)
 --------------------------------------------------------------------------------
 function ARP.GetInventory()
     local source = source
-    MySQL.Async.fetchScalar('SELECT item FROM user_inventory WHERE identifier = @identifier', {
+    MySQL.Async.fetchAll('SELECT item FROM user_inventory WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source),
-    }, function(result)
-        TriggerClientEvent('ARP:PlayerInventory', source, result)
+    }, function(inventory)
+        for i = 1, #inventory do
+            TriggerClientEvent('ARP:PlayerInventory', source, inventory[i].item)
+        end
     end)
 end
 
