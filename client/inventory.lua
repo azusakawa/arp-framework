@@ -1,3 +1,5 @@
+local ARP = {}
+
 --------------------------------------------------------------------------------
 -- 物品庫
 --------------------------------------------------------------------------------
@@ -5,6 +7,11 @@ local inventory = {}
 
 RegisterNetEvent('ARP:PlayerInventory')
 AddEventHandler('ARP:PlayerInventory', function(items)
+    for i = 1, #inventory do 
+        table.remove(inventory, i)
+    end
+    Citizen.Wait(10)
+
     table.insert(inventory, items)
 end)
 
@@ -13,31 +20,34 @@ end)
 ------------------------------------------------------------
 RMenu.Add('Intmenu', 'main', RageUI.CreateMenu('Inventory', 'Inventory menu'))
 RMenu.Add('Intmenu', 'item', RageUI.CreateMenu('Inventory', 'Inventory menu'))
-local action = {
-    'Give',
-    'Throw'
+local ARPMenu = {
+    action = {
+        'Give',
+        'Throw'
+    },
+    list = 1,
 }
 
 RageUI.CreateWhile(1.0, RMenu:Get('Intmenu', 'main'), nil, function()
     RageUI.IsVisible(RMenu:Get('Intmenu', 'main'), true, true, true, function()
-        for _, item in pairs(inventory) do
-            RageUI.Button(item, nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        for _, item in pairs(inventory) do 
+            RageUI.List(item, ARPMenu.action, ARPMenu.list, nil, {}, true, function(hovered, active, selected, index)
                 if selected then
+                    if index == 1 then
+                        local clsped, distance = ARP.GetClosestPlayer()
+                        if (distance ~= -1 and distance < 5) then
+                            TriggerServerEvent('ARP:GiveInventory', clsped)
+                        else
+                            TriggerEvent('ARP:Notify', '~r~Not~s~ player near you')
+                        end
+                    elseif index == 2 then
+                        TriggerServerEvent('ARP:ThrowInventory', item)
+                    end
                 end
-            end, RMenu:Get('Intmenu', 'item'))
-        end
-    end, function()
-    end)
-end)
-
-RageUI.CreateWhile(1.0, RMenu:Get('Intmenu', 'item'), nil, function()
-    RageUI.IsVisible(RMenu:Get('Intmenu', 'item'), true, true, true, function()
-        for _, v in pairs(action) do
-            RageUI.Button(v, nil, {}, true, function(hovered, active, selected)
-                if selected then
-                end
+                ARPMenu.list = index
             end)
         end
+    end, function()
     end)
 end)
 
@@ -47,7 +57,43 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
         if IsControlJustPressed(1, 38) then
             RageUI.Visible(RMenu:Get('Intmenu', 'main'), not RageUI.Visible(RMenu:Get('Intmenu', 'main')))
-            TriggerServerEvent('ARP:GetInventory')
+            TriggerServerEvent('ARP:LoadInventory')
         end
     end
 end)
+
+------------------------------------------------------------
+-- 獲取附近玩家
+------------------------------------------------------------
+function ARP.GetClosestPlayer()
+    local players = GetPlayers()
+    local Distance = -1
+    local Player = -1
+    local plyCoords = GetEntityCoords(GetPlayerPed(-1), 0)
+    
+    for _, ped in ipairs(players) do
+        local target = GetPlayerPed(ped)
+        if(target ~= GetPlayerPed(-1)) then
+            local othCoords = GetEntityCoords(GetPlayerPed(ped), 0)
+            local PlyToPly = Vdist(othCoords["x"], othCoords["y"], othCoords["z"], plyCoords["x"], plyCoords["y"], plyCoords["z"])
+            if(PlyToPly == -1 or Distance > PlyToPly) then
+                Player = ped
+                Distance = PlyToPly
+            end
+        end
+    end
+    
+    return Player, Distance
+end  
+  
+function GetPlayers()
+    local players = {}
+
+    for i = 0, 255 do
+        if NetworkIsPlayerActive(i) then
+            table.insert(players, i)
+        end
+    end
+
+    return players
+end

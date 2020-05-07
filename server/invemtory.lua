@@ -1,9 +1,9 @@
 local ARP = {}
 
 --------------------------------------------------------------------------------
--- 獲得/更新 物品
+-- 獲得物品
 --------------------------------------------------------------------------------
-function ARP.UpdateInventory(item)
+function ARP.GetInventory(item)
     local source = source
     MySQL.Async.fetchAll('SELECT item FROM user_inventory WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source),
@@ -26,21 +26,69 @@ function ARP.UpdateInventory(item)
         if not add then
             MySQL.Async.fetchScalar('INSERT INTO user_inventory (identifier, item) VALUES (@identifier, @item)', {
                 ['@identifier'] = GetPlayerIdentifier(source),
-                ['@item'] = item,
+                ['@item'] = item
             })
         end
     end)
 end
 
-RegisterServerEvent('ARP:UpdateInventory')
-AddEventHandler('ARP:UpdateInventory', function(item)
-    ARP.UpdateInventory(item)
+RegisterServerEvent('ARP:GetInventory')
+AddEventHandler('ARP:GetInventory', function(item)
+    ARP.GetInventory(item)
+end)
+
+--------------------------------------------------------------------------------
+-- 給予物品
+--------------------------------------------------------------------------------
+function ARP.GetInventory(target)
+    local source = source
+    MySQL.Async.fetchAll('SELECT item FROM user_inventory WHERE identifier = @identifier', {
+        ['@identifier'] = GetPlayerIdentifier(source),
+    }, function(result)
+        if result then
+            MySQL.Async.execute('DELETE FROM user_inventory WHERE item = @item',{
+                ['@item'] = limit,
+            })
+            TriggerClientEvent('ARP:PlayerInventory', source)
+        end
+    end)
+    MySQL.Async.fetchScalar('INSERT INTO user_inventory (identifier, item) VALUES (@identifier, @item)', {
+        ['@identifier'] = GetPlayerIdentifier(target),
+        ['@item'] = limit
+    })
+end
+
+RegisterServerEvent('ARP:GiveInventory')
+AddEventHandler('ARP:GiveInventory', function(target)
+    ARP.GetInventory(target)
+end)
+
+--------------------------------------------------------------------------------
+-- 丟棄物品
+--------------------------------------------------------------------------------
+function ARP.ThrowInventory(limit)
+    local source = source
+    MySQL.Async.fetchAll('SELECT item FROM user_inventory WHERE identifier = @identifier', {
+        ['@identifier'] = GetPlayerIdentifier(source),
+    }, function(result)
+        if result then
+            MySQL.Async.execute('DELETE FROM user_inventory WHERE item = @item',{
+                ['@item'] = limit,
+            })
+            TriggerClientEvent('ARP:PlayerInventory', source)
+        end
+    end)
+end
+
+RegisterServerEvent('ARP:ThrowInventory')
+AddEventHandler('ARP:ThrowInventory', function(limit)
+    ARP.ThrowInventory(limit)
 end)
 
 --------------------------------------------------------------------------------
 -- 取得玩家物品
 --------------------------------------------------------------------------------
-function ARP.GetInventory()
+function ARP.LoadInventory()
     local source = source
     MySQL.Async.fetchAll('SELECT item FROM user_inventory WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source),
@@ -51,7 +99,7 @@ function ARP.GetInventory()
     end)
 end
 
-RegisterServerEvent('ARP:GetInventory')
-AddEventHandler('ARP:GetInventory', function()
-    ARP.GetInventory()
+RegisterServerEvent('ARP:LoadInventory')
+AddEventHandler('ARP:LoadInventory', function()
+    ARP.LoadInventory()
 end)
