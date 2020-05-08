@@ -9,7 +9,7 @@ CREATE TABLE `users` (
 	PRIMARY KEY (`identifier`)
 );
 
-CREATE TABLE `itmes` (
+CREATE TABLE `items` (
 	`name` VARCHAR(50) NOT NULL,
 	`label` VARCHAR(50) NOT NULL,
 

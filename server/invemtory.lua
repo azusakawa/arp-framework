@@ -40,22 +40,34 @@ end)
 --------------------------------------------------------------------------------
 -- 給予物品
 --------------------------------------------------------------------------------
-function ARP.GetInventory(target)
+function ARP.GetInventory(target, limit)
     local source = source
     MySQL.Async.fetchAll('SELECT item FROM user_inventory WHERE identifier = @identifier', {
-        ['@identifier'] = GetPlayerIdentifier(source),
+        ['@identifier'] = GetPlayerIdentifier(target),
     }, function(result)
         if result then
-            MySQL.Async.execute('DELETE FROM user_inventory WHERE item = @item',{
-                ['@item'] = limit,
-            })
-            TriggerClientEvent('ARP:PlayerInventory', source)
+            for i = 1, #result do 
+                if result[i].item == limit then
+                    TriggerClientEvent('ARP:Notify', source, 'He has same item in her inventory')
+                else
+                    MySQL.Async.fetchAll('SELECT item FROM user_inventory WHERE identifier = @identifier', {
+                        ['@identifier'] = GetPlayerIdentifier(source),
+                    }, function(result)
+                        if result then
+                            MySQL.Async.execute('DELETE FROM user_inventory WHERE item = @item',{
+                                ['@item'] = limit,
+                            })
+                            TriggerClientEvent('ARP:PlayerInventory', source)
+                        end
+                    end)
+                    MySQL.Async.fetchScalar('INSERT INTO user_inventory (identifier, item) VALUES (@identifier, @item)', {
+                        ['@identifier'] = GetPlayerIdentifier(target),
+                        ['@item'] = limit
+                    })
+                end
+            end
         end
-    end)
-    MySQL.Async.fetchScalar('INSERT INTO user_inventory (identifier, item) VALUES (@identifier, @item)', {
-        ['@identifier'] = GetPlayerIdentifier(target),
-        ['@item'] = limit
-    })
+    end) 
 end
 
 RegisterServerEvent('ARP:GiveInventory')
@@ -68,14 +80,15 @@ end)
 --------------------------------------------------------------------------------
 function ARP.ThrowInventory(limit)
     local source = source
-    MySQL.Async.fetchAll('SELECT item FROM user_inventory WHERE identifier = @identifier', {
-        ['@identifier'] = GetPlayerIdentifier(source),
-    }, function(result)
-        if result then
-            MySQL.Async.execute('DELETE FROM user_inventory WHERE item = @item',{
-                ['@item'] = limit,
-            })
-            TriggerClientEvent('ARP:PlayerInventory', source)
+    MySQL.Async.fetchAll('SELECT * FROM items', {}, function(label)
+        for i = 1, #label do 
+            if label[i].label == limit then
+                MySQL.Async.execute('DELETE FROM user_inventory WHERE item = @item',{
+                    ['@item'] = label[i].name,
+                }, function(result)
+                    ARP.LoadInventory(source)
+                end)
+            end
         end
     end)
 end
@@ -94,7 +107,13 @@ function ARP.LoadInventory()
         ['@identifier'] = GetPlayerIdentifier(source),
     }, function(inventory)
         for i = 1, #inventory do
-            TriggerClientEvent('ARP:PlayerInventory', source, inventory[i].item)
+            MySQL.Async.fetchAll('SELECT * FROM items', {}, function(label)
+                for j = 1, #label do 
+                    if label[j].name == inventory[i].item then
+                        TriggerClientEvent('ARP:PlayerInventory', source, label[j].label)
+                    end
+                end
+            end)
         end
     end)
 end
