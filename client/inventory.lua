@@ -20,7 +20,7 @@ end)
 ------------------------------------------------------------
 RMenu.Add('Intmenu', 'main', RageUI.CreateMenu('Inventory', 'Inventory menu'))
 RMenu.Add('Intmenu', 'item', RageUI.CreateMenu('Inventory', 'Inventory menu'))
-local ARPMenu = {
+local IntMenu = {
     action = {
         'Give',
         'Throw'
@@ -31,7 +31,7 @@ local ARPMenu = {
 RageUI.CreateWhile(1.0, RMenu:Get('Intmenu', 'main'), nil, function()
     RageUI.IsVisible(RMenu:Get('Intmenu', 'main'), true, true, true, function()
         for _, item in pairs(inventory) do 
-            RageUI.List(item, ARPMenu.action, ARPMenu.list, nil, {}, true, function(hovered, active, selected, index)
+            RageUI.List(item, IntMenu.action, IntMenu.list, nil, {}, true, function(hovered, active, selected, index)
                 if selected then
                     if index == 1 then
                         local clsped, distance = ARP.GetClosestPlayer()
@@ -44,7 +44,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('Intmenu', 'main'), nil, function()
                         TriggerServerEvent('ARP:ThrowInventory', item)
                     end
                 end
-                ARPMenu.list = index
+                IntMenu.list = index
             end)
         end
     end, function()
@@ -55,7 +55,7 @@ end)
 Citizen.CreateThread(function()
     while true do 
         Citizen.Wait(0)
-        if IsControlJustPressed(1, 38) then
+        if IsControlJustPressed(1, 289) then
             RageUI.Visible(RMenu:Get('Intmenu', 'main'), not RageUI.Visible(RMenu:Get('Intmenu', 'main')))
             TriggerServerEvent('ARP:LoadInventory')
         end

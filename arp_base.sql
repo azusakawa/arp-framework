@@ -4,6 +4,7 @@ USE `arp`;
 CREATE TABLE `users` (
 	`identifier` VARCHAR(40) NOT NULL,
 	`position` VARCHAR(53) NULL DEFAULT '{-269.4,-955.3,31.2}',
+	`skin` LONGTEXT NOT DEFAULT NULL,
 	`isdead` INT(11) NOT NULL DEFAULT 0,
 
 	PRIMARY KEY (`identifier`)
