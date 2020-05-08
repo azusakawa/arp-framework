@@ -28,6 +28,7 @@ function ARP.GetInventory(item)
                 ['@identifier'] = GetPlayerIdentifier(source),
                 ['@item'] = item
             })
+            ARP.LoadInventory(source)
         end
     end)
 end
@@ -57,7 +58,7 @@ function ARP.GetInventory(target, limit)
                             MySQL.Async.execute('DELETE FROM user_inventory WHERE item = @item',{
                                 ['@item'] = limit,
                             })
-                            TriggerClientEvent('ARP:PlayerInventory', source)
+                            ARP.LoadInventory(source)
                         end
                     end)
                     MySQL.Async.fetchScalar('INSERT INTO user_inventory (identifier, item) VALUES (@identifier, @item)', {

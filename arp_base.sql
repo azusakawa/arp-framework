@@ -14,7 +14,7 @@ CREATE TABLE `items` (
 	`label` VARCHAR(50) NOT NULL,
 
 	PRIMARY KEY (`name`)
-)
+);
 
 CREATE TABLE `user_inventory` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
