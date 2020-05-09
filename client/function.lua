@@ -33,7 +33,6 @@ AddEventHandler('ARP:Notify', function(text)
     ARP.Notify(text)
 end)
 
-
 function ARP.Notify(text)
     SetNotificationTextEntry('STRING')
     AddTextComponentString(text)

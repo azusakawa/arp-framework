@@ -38,7 +38,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('Intmenu', 'main'), nil, function()
                         if (distance ~= -1 and distance < 5) then
                             TriggerServerEvent('ARP:GiveInventory', clsped, item)
                         else
-                            TriggerEvent('ARP:Notify', '~r~Not~s~ player near you')
+                            ARP:Notify('~r~Not~s~ player near you')
                         end
                     elseif index == 2 then
                         TriggerServerEvent('ARP:ThrowInventory', item)
