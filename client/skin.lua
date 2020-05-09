@@ -20,6 +20,19 @@ RMenu.Add('skinmenu', 'ChestCase', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'm
 RMenu.Add('skinmenu', 'BodybCase', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), 'Bodyb Menu', 'bodyb menu'))
 RMenu.Add('skinmenu', 'EarsCase', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), 'Ears Menu', 'ears menu'))
 RMenu.Add('skinmenu', 'TShirtCase', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), 'TShirt Menu', 'tshirt menu'))
+RMenu.Add('skinmenu', 'TorsoCase', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), 'Torso Menu', 'torso menu'))
+RMenu.Add('skinmenu', 'DecalsCase', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), 'Decals Menu', 'decals menu'))
+RMenu.Add('skinmenu', 'ArmsCase', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), 'Arms Menu', 'arms menu'))
+RMenu.Add('skinmenu', 'PantsCase', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), 'Pants Menu', 'pants menu'))
+RMenu.Add('skinmenu', 'ShoesCase', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), 'Shoes Menu', 'shoes menu'))
+RMenu.Add('skinmenu', 'MaskCase', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), 'Mask Menu', 'mask menu'))
+RMenu.Add('skinmenu', 'BproofCase', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), 'Bproof Menu', 'bproof menu'))
+RMenu.Add('skinmenu', 'ChainCase', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), 'Chain Menu', 'chain menu'))
+RMenu.Add('skinmenu', 'BagsCase', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), 'Bags Menu', 'bags menu'))
+RMenu.Add('skinmenu', 'HelmetCase', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), 'Helmet Menu', 'helmet menu'))
+RMenu.Add('skinmenu', 'GlassesCase', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), 'Glasses Menu', 'glasses menu'))
+RMenu.Add('skinmenu', 'WatchesCase', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), 'Watches Menu', 'watches menu'))
+RMenu.Add('skinmenu', 'BraceletsCase', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), 'Bracelets Menu', 'bracelets menu'))
 
 local SkinMenu = {
     sex = 1,
@@ -68,9 +81,33 @@ local SkinMenu = {
     esarssize = 1,
     tshirt = 1,
     tshirtsize = 1,
+    torso = 1,
+    torsosize = 1,
+    decals = 1,
+    decalssize = 1,
+    arms = 1,
+    armssize = 1,
+    pants = 1,
+    pantssize = 1,
+    shoes = 1,
+    shoessize = 1,
+    mask = 1,
+    masksize = 1,
+    bproof = 1,
+    bproofsize = 1,
+    chain = 1,
+    chainsize = 1,
+    bags = 1,
+    bagssize = 1,
+    helmet = 1,
+    helmetsize = 1,
+    glasses = 1,
+    glassessize = 1,
+    watches = 1,
+    watchessize = 1,
+    bracelets = 1,
+    braceletssize = 1,
 }
-
-
 
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'main'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'main'), true, true, true, function()
@@ -163,6 +200,58 @@ RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'main'), nil, function()
             if selected then
             end
         end, RMenu:Get('skinmenu', 'TShirtCase'))
+        RageUI.Button("Torso" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+            if selected then
+            end
+        end, RMenu:Get('skinmenu', 'TorsoCase'))
+        RageUI.Button("Decals" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+            if selected then
+            end
+        end, RMenu:Get('skinmenu', 'DecalsCase'))
+        RageUI.Button("Arms" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+            if selected then
+            end
+        end, RMenu:Get('skinmenu', 'ArmsCase'))
+        RageUI.Button("Pants" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+            if selected then
+            end
+        end, RMenu:Get('skinmenu', 'PantsCase'))
+        RageUI.Button("Shoes" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+            if selected then
+            end
+        end, RMenu:Get('skinmenu', 'ShoesCase'))
+        RageUI.Button("Mask" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+            if selected then
+            end
+        end, RMenu:Get('skinmenu', 'MaskCase'))
+        RageUI.Button("Bproof" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+            if selected then
+            end
+        end, RMenu:Get('skinmenu', 'BproofCase'))
+        RageUI.Button("Chain" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+            if selected then
+            end
+        end, RMenu:Get('skinmenu', 'ChainCase'))
+        RageUI.Button("Bags" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+            if selected then
+            end
+        end, RMenu:Get('skinmenu', 'BagsCase'))
+        RageUI.Button("Helmet" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+            if selected then
+            end
+        end, RMenu:Get('skinmenu', 'HelmetCase'))
+        RageUI.Button("Glasses" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+            if selected then
+            end
+        end, RMenu:Get('skinmenu', 'GlassesCase'))
+        RageUI.Button("Watches" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+            if selected then
+            end
+        end, RMenu:Get('skinmenu', 'WatchesCase'))
+        RageUI.Button("Bracelets" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+            if selected then
+            end
+        end, RMenu:Get('skinmenu', 'BraceletsCase'))
     end, function()
     end)
 end)
@@ -616,6 +705,308 @@ RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'TShirtCase'), nil, function()
                 SetPedComponentVariation(ped, 8, SkinMenu.tshirt, SkinMenu.tshirtsize, 2)
             end
             SkinMenu.tshirtsize = index
+        end)
+    end, function()
+    end)
+end)
+
+------------------------------------------------------------
+-- 身軀
+------------------------------------------------------------
+RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'TorsoCase'), nil, function()
+    RageUI.IsVisible(RMenu:Get('skinmenu', 'TorsoCase'), true, true, true, function()
+        local ped = PlayerPedId()
+        RageUI.Progress('Torso', SkinMenu.torso, (GetNumberOfPedDrawableVariations(ped, 11) - 1), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedComponentVariation(ped, 11, SkinMenu.torso, SkinMenu.tshirtsize, 2)
+            end
+            SkinMenu.torso = index
+        end)
+        RageUI.Progress('Torso Size', SkinMenu.torsosize, GetNumberOfPedTextureVariations(ped, 11, SkinMenu.torso - 1), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedComponentVariation(ped, 11, SkinMenu.torso, SkinMenu.torsosize, 2)
+            end
+            SkinMenu.torsosize = index
+        end)
+    end, function()
+    end)
+end)
+
+------------------------------------------------------------
+-- 貼花
+------------------------------------------------------------
+RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'DecalsCase'), nil, function()
+    RageUI.IsVisible(RMenu:Get('skinmenu', 'DecalsCase'), true, true, true, function()
+        local ped = PlayerPedId()
+        RageUI.Progress('Decals', SkinMenu.decals, (GetNumberOfPedDrawableVariations(ped, 10) - 1), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedComponentVariation(ped, 10, SkinMenu.decals, SkinMenu.decalssize, 2)
+            end
+            SkinMenu.decals = index
+        end)
+        RageUI.Progress('Decals Size', SkinMenu.decalssize, GetNumberOfPedTextureVariations(ped, 10, SkinMenu.decals - 1), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedComponentVariation(ped, 10, SkinMenu.decals, SkinMenu.decalssize, 2)
+            end
+            SkinMenu.decalssize = index
+        end)
+    end, function()
+    end)
+end)
+
+------------------------------------------------------------
+-- 手臂
+------------------------------------------------------------
+RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'ArmsCase'), nil, function()
+    RageUI.IsVisible(RMenu:Get('skinmenu', 'ArmsCase'), true, true, true, function()
+        local ped = PlayerPedId()
+        RageUI.Progress('Arms', SkinMenu.arms, (GetNumberOfPedDrawableVariations(ped, 3) - 1), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedComponentVariation(ped, 3, SkinMenu.arms, SkinMenu.armssize, 2)
+            end
+            SkinMenu.arms = index
+        end)
+        RageUI.Progress('Arms Size', SkinMenu.armssize, 10, nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedComponentVariation(ped, 3, SkinMenu.arms, SkinMenu.armssize, 2)
+            end
+            SkinMenu.armssize = index
+        end)
+    end, function()
+    end)
+end)
+
+------------------------------------------------------------
+-- 褲子
+------------------------------------------------------------
+RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'PantsCase'), nil, function()
+    RageUI.IsVisible(RMenu:Get('skinmenu', 'PantsCase'), true, true, true, function()
+        local ped = PlayerPedId()
+        RageUI.Progress('Pants', SkinMenu.pants, (GetNumberOfPedDrawableVariations(ped, 4) - 1), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedComponentVariation(ped, 4, SkinMenu.pants, SkinMenu.pantssize, 2)
+            end
+            SkinMenu.pants = index
+        end)
+        RageUI.Progress('Pants Size', SkinMenu.pantssize, (GetNumberOfPedTextureVariations(ped, 4, SkinMenu.pants)), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedComponentVariation(ped, 4, SkinMenu.pants, SkinMenu.pantssize, 2)
+            end
+            SkinMenu.pantssize = index
+        end)
+    end, function()
+    end)
+end)
+
+------------------------------------------------------------
+-- 鞋子
+------------------------------------------------------------
+RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'ShoesCase'), nil, function()
+    RageUI.IsVisible(RMenu:Get('skinmenu', 'ShoesCase'), true, true, true, function()
+        local ped = PlayerPedId()
+        RageUI.Progress('Shoes', SkinMenu.shoes, (GetNumberOfPedDrawableVariations(ped, 6) - 1), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedComponentVariation(ped, 6, SkinMenu.shoes, SkinMenu.shoessize, 2)
+            end
+            SkinMenu.shoes = index
+        end)
+        RageUI.Progress('Shoes Size', SkinMenu.shoessize, (GetNumberOfPedTextureVariations(ped, 6, SkinMenu.shoes)), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedComponentVariation(ped, 6, SkinMenu.shoes, SkinMenu.shoessize, 2)
+            end
+            SkinMenu.shoessize = index
+        end)
+    end, function()
+    end)
+end)
+
+------------------------------------------------------------
+-- 面具
+------------------------------------------------------------
+RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'MaskCase'), nil, function()
+    RageUI.IsVisible(RMenu:Get('skinmenu', 'MaskCase'), true, true, true, function()
+        local ped = PlayerPedId()
+        RageUI.Progress('Mask', SkinMenu.mask, (GetNumberOfPedDrawableVariations(ped, 1) - 1), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedComponentVariation(ped, 1, SkinMenu.mask, SkinMenu.masksize, 2)
+            end
+            SkinMenu.mask = index
+        end)
+        RageUI.Progress('Mask Size', SkinMenu.masksize, (GetNumberOfPedTextureVariations(ped, 1, SkinMenu.mask)), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedComponentVariation(ped, 1, SkinMenu.mask, SkinMenu.masksize, 2)
+            end
+            SkinMenu.masksize = index
+        end)
+    end, function()
+    end)
+end)
+
+------------------------------------------------------------
+-- 防彈背心
+------------------------------------------------------------
+RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'BproofCase'), nil, function()
+    RageUI.IsVisible(RMenu:Get('skinmenu', 'BproofCase'), true, true, true, function()
+        local ped = PlayerPedId()
+        RageUI.Progress('Bproof', SkinMenu.bproof, (GetNumberOfPedDrawableVariations(ped, 9) - 1), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedComponentVariation(ped, 9, SkinMenu.bproof, SkinMenu.bproofsize, 2)
+            end
+            SkinMenu.bproof = index
+        end)
+        RageUI.Progress('Bproof Size', SkinMenu.bproofsize, (GetNumberOfPedTextureVariations(ped, 9, SkinMenu.bproof)), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedComponentVariation(ped, 9, SkinMenu.bproof, SkinMenu.bproofsize, 2)
+            end
+            SkinMenu.bproofsize = index
+        end)
+    end, function()
+    end)
+end)
+
+------------------------------------------------------------
+-- 項鍊
+------------------------------------------------------------
+RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'ChainCase'), nil, function()
+    RageUI.IsVisible(RMenu:Get('skinmenu', 'ChainCase'), true, true, true, function()
+        local ped = PlayerPedId()
+        RageUI.Progress('Chain', SkinMenu.chain, (GetNumberOfPedDrawableVariations(ped, 7) - 1), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedComponentVariation(ped, 7, SkinMenu.chain, SkinMenu.chainsize, 2)
+            end
+            SkinMenu.chain = index
+        end)
+        RageUI.Progress('Chain Size', SkinMenu.chainsize, (GetNumberOfPedTextureVariations(ped, 7, SkinMenu.chain)), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedComponentVariation(ped, 7, SkinMenu.chain, SkinMenu.chainsize, 2)
+            end
+            SkinMenu.chainsize = index
+        end)
+    end, function()
+    end)
+end)
+
+------------------------------------------------------------
+-- 背包
+------------------------------------------------------------
+RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'BagsCase'), nil, function()
+    RageUI.IsVisible(RMenu:Get('skinmenu', 'BagsCase'), true, true, true, function()
+        local ped = PlayerPedId()
+        RageUI.Progress('Bags', SkinMenu.bags, (GetNumberOfPedDrawableVariations(ped, 5) - 1), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedComponentVariation(ped, 5, SkinMenu.bags, SkinMenu.bagssize, 2)
+            end
+            SkinMenu.bags = index
+        end)
+        RageUI.Progress('Bags Size', SkinMenu.bagssize, (GetNumberOfPedTextureVariations(ped, 5, SkinMenu.bags)), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedComponentVariation(ped, 5, SkinMenu.bags, SkinMenu.bagssize, 2)
+            end
+            SkinMenu.bagssize = index
+        end)
+    end, function()
+    end)
+end)
+
+------------------------------------------------------------
+-- 頭盔
+------------------------------------------------------------
+RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'HelmetCase'), nil, function()
+    RageUI.IsVisible(RMenu:Get('skinmenu', 'HelmetCase'), true, true, true, function()
+        local ped = PlayerPedId()
+        RageUI.Progress('Helmet', SkinMenu.helmet, (GetNumberOfPedDrawableVariations(ped, 0) - 1), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                if SkinMenu.Helmet == 0 then
+                    ClearPedProp(ped, 2)
+                else
+                    SetPedPropIndex(ped, 0, SkinMenu.helmet, SkinMenu.helmetsize, 2)
+                end
+            end
+            SkinMenu.helmet = index
+        end)
+        RageUI.Progress('Helmet Size', SkinMenu.helmetsize, (GetNumberOfPedTextureVariations(ped, 0, SkinMenu.helmet)), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedPropIndex(ped, 0, SkinMenu.helmet, SkinMenu.helmetsize, 2)
+            end
+            SkinMenu.helmetsize = index
+        end)
+    end, function()
+    end)
+end)
+
+------------------------------------------------------------
+-- 眼鏡
+------------------------------------------------------------
+RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'GlassesCase'), nil, function()
+    RageUI.IsVisible(RMenu:Get('skinmenu', 'GlassesCase'), true, true, true, function()
+        local ped = PlayerPedId()
+        RageUI.Progress('Glasses', SkinMenu.glasses, (GetNumberOfPedDrawableVariations(ped, 1) - 1), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                if SkinMenu.glasses == 0 then
+                    ClearPedProp(ped, 1)
+                else
+                    SetPedPropIndex(ped, 1, SkinMenu.glasses, SkinMenu.glassessize, 2)
+                end
+            end
+            SkinMenu.glasses = index
+        end)
+        RageUI.Progress('Glasses Size', SkinMenu.glassessize, (GetNumberOfPedTextureVariations(ped, 1, SkinMenu.glasses)), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedPropIndex(ped, 1, SkinMenu.glasses, SkinMenu.glassessize, 2)
+            end
+            SkinMenu.glassessize = index
+        end)
+    end, function()
+    end)
+end)
+
+------------------------------------------------------------
+-- 手錶
+------------------------------------------------------------
+RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'WatchesCase'), nil, function()
+    RageUI.IsVisible(RMenu:Get('skinmenu', 'WatchesCase'), true, true, true, function()
+        local ped = PlayerPedId()
+        RageUI.Progress('Watches', SkinMenu.watches, (GetNumberOfPedDrawableVariations(ped, 6) - 1), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                if SkinMenu.watches == 0 then
+                    ClearPedProp(ped, 6)
+                else
+                    SetPedPropIndex(ped, 6, SkinMenu.watches, SkinMenu.watchessize, 2)
+                end
+            end
+            SkinMenu.watches = index
+        end)
+        RageUI.Progress('Watches Size', SkinMenu.watchessize, (GetNumberOfPedTextureVariations(ped, 6, SkinMenu.watches)), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedPropIndex(ped, 6, SkinMenu.watches, SkinMenu.watchessize, 2)
+            end
+            SkinMenu.watchessize = index
+        end)
+    end, function()
+    end)
+end)
+
+------------------------------------------------------------
+-- 手鐲
+------------------------------------------------------------
+RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'BraceletsCase'), nil, function()
+    RageUI.IsVisible(RMenu:Get('skinmenu', 'BraceletsCase'), true, true, true, function()
+        local ped = PlayerPedId()
+        RageUI.Progress('Bracelets', SkinMenu.bracelets, (GetNumberOfPedDrawableVariations(ped, 7) - 1), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                if SkinMenu.bracelets == 0 then
+                    ClearPedProp(ped, 7)
+                else
+                    SetPedPropIndex(ped, 7, SkinMenu.bracelets, SkinMenu.braceletssize, 2)
+                end
+            end
+            SkinMenu.bracelets = index
+        end)
+        RageUI.Progress('Bracelets Size', SkinMenu.braceletssize, (GetNumberOfPedTextureVariations(ped, 7, SkinMenu.bracelets)), nil, true, true, function(hovered, active, selected, index)
+            if active then
+                SetPedPropIndex(ped, 7, SkinMenu.bracelets, SkinMenu.braceletssize, 2)
+            end
+            SkinMenu.braceletssize = index
         end)
     end, function()
     end)
