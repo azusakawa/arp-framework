@@ -54,23 +54,23 @@ end
 ------------------------------------------------------------
 -- 紀錄玩家位置/生成
 ------------------------------------------------------------
-RegisterServerEvent('ARP:UpdatePosition')
-AddEventHandler('ARP:UpdatePosition', function(PosX, PosY, PosZ)
+RegisterServerEvent('ARP_Core:UpdatePosition')
+AddEventHandler('ARP_Core:UpdatePosition', function(PosX, PosY, PosZ)
     MySQL.Async.execute('UPDATE users SET position = @position WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source),
         ['@position'] = '{' .. PosX .. ', ' .. PosY .. ', ' .. PosZ .. '}',
     })
 end)
 
-RegisterServerEvent('ARP:SpawnPlayer')
-AddEventHandler('ARP:SpawnPlayer', function()
+RegisterServerEvent('ARP_Core:SpawnPlayer')
+AddEventHandler('ARP_Core:SpawnPlayer', function()
     local source = source
     MySQL.Async.fetchScalar('SELECT position FROM users WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source),
     }, function(result)
         if result then
             local Spawnpos = json.decode(result)
-            TriggerClientEvent('ARP:lastPosition', source, Spawnpos[1], Spawnpos[2], Spawnpos[3])
+            TriggerClientEvent('ARP_Core:lastPosition', source, Spawnpos[1], Spawnpos[2], Spawnpos[3])
         end
     end)
 end)

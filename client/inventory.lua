@@ -5,8 +5,8 @@ local ARP = {}
 --------------------------------------------------------------------------------
 local inventory = {}
 
-RegisterNetEvent('ARP:PlayerInventory')
-AddEventHandler('ARP:PlayerInventory', function(items)
+RegisterNetEvent('ARP_Core:PlayerInventory')
+AddEventHandler('ARP_Core:PlayerInventory', function(items)
     for i = 1, #inventory do 
         table.remove(inventory, i)
     end
@@ -36,12 +36,12 @@ RageUI.CreateWhile(1.0, RMenu:Get('Intmenu', 'main'), nil, function()
                     if index == 1 then
                         local clsped, distance = ARP.GetClosestPlayer()
                         if (distance ~= -1 and distance < 5) then
-                            TriggerServerEvent('ARP:GiveInventory', clsped, item)
+                            TriggerServerEvent('ARP_Core:GiveInventory', clsped, item)
                         else
-                            ARP:Notify('~r~Not~s~ player near you')
+                            ARP_Core:Notify('~r~Not~s~ player near you')
                         end
                     elseif index == 2 then
-                        TriggerServerEvent('ARP:ThrowInventory', item)
+                        TriggerServerEvent('ARP_Core:ThrowInventory', item)
                     end
                 end
                 IntMenu.list = index
@@ -57,7 +57,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
         if IsControlJustPressed(1, 289) then
             RageUI.Visible(RMenu:Get('Intmenu', 'main'), not RageUI.Visible(RMenu:Get('Intmenu', 'main')))
-            TriggerServerEvent('ARP:LoadInventory')
+            TriggerServerEvent('ARP_Core:LoadInventory')
         end
     end
 end)

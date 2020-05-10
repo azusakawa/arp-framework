@@ -3,8 +3,8 @@ ARP = {}
 ------------------------------------------------------------
 -- 3D 文字
 ------------------------------------------------------------
-RegisterNetEvent('ARP:Draw3DTxt')
-AddEventHandler('ARP:Draw3DTxt', function(x, y, z, r, g, b, text)  
+RegisterNetEvent('ARP_Core:Draw3DTxt')
+AddEventHandler('ARP_Core:Draw3DTxt', function(x, y, z, r, g, b, text)  
     ARP.Draw3DTxt(x, y, z, r, g, b, text)
 end)
 
@@ -28,8 +28,8 @@ end
 ------------------------------------------------------------
 -- 通知
 ------------------------------------------------------------
-RegisterNetEvent('ARP:Notify')
-AddEventHandler('ARP:Notify', function(text)  
+RegisterNetEvent('ARP_Core:Notify')
+AddEventHandler('ARP_Core:Notify', function(text)  
     ARP.Notify(text)
 end)
 

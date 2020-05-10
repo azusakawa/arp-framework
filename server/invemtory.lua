@@ -17,7 +17,7 @@ function ARP.GetInventory(item)
 
         for _, v in pairs(inventory) do 
             if v == item then
-                TriggerClientEvent('ARP:Notify', source, 'You have ~r~same~s~ item in your inventory')
+                TriggerClientEvent('ARP_Core:Notify', source, 'You have ~r~same~s~ item in your inventory')
                 add = true
                 break
             end
@@ -33,8 +33,8 @@ function ARP.GetInventory(item)
     end)
 end
 
-RegisterServerEvent('ARP:GetInventory')
-AddEventHandler('ARP:GetInventory', function(item)
+RegisterServerEvent('ARP_Core:GetInventory')
+AddEventHandler('ARP_Core:GetInventory', function(item)
     ARP.GetInventory(item)
 end)
 
@@ -49,7 +49,7 @@ function ARP.GetInventory(target, limit)
         if result then
             for i = 1, #result do 
                 if result[i].item == limit then
-                    TriggerClientEvent('ARP:Notify', source, 'He has same item in her inventory')
+                    TriggerClientEvent('ARP_Core:Notify', source, 'He has same item in her inventory')
                 else
                     MySQL.Async.fetchAll('SELECT item FROM user_inventory WHERE identifier = @identifier', {
                         ['@identifier'] = GetPlayerIdentifier(source),
@@ -71,8 +71,8 @@ function ARP.GetInventory(target, limit)
     end) 
 end
 
-RegisterServerEvent('ARP:GiveInventory')
-AddEventHandler('ARP:GiveInventory', function(target)
+RegisterServerEvent('ARP_Core:GiveInventory')
+AddEventHandler('ARP_Core:GiveInventory', function(target)
     ARP.GetInventory(target)
 end)
 
@@ -94,8 +94,8 @@ function ARP.ThrowInventory(limit)
     end)
 end
 
-RegisterServerEvent('ARP:ThrowInventory')
-AddEventHandler('ARP:ThrowInventory', function(limit)
+RegisterServerEvent('ARP_Core:ThrowInventory')
+AddEventHandler('ARP_Core:ThrowInventory', function(limit)
     ARP.ThrowInventory(limit)
 end)
 
@@ -111,7 +111,7 @@ function ARP.LoadInventory()
             MySQL.Async.fetchAll('SELECT * FROM items', {}, function(label)
                 for j = 1, #label do 
                     if label[j].name == inventory[i].item then
-                        TriggerClientEvent('ARP:PlayerInventory', source, label[j].label)
+                        TriggerClientEvent('ARP_Core:PlayerInventory', source, label[j].label)
                     end
                 end
             end)
@@ -119,7 +119,7 @@ function ARP.LoadInventory()
     end)
 end
 
-RegisterServerEvent('ARP:LoadInventory')
-AddEventHandler('ARP:LoadInventory', function()
+RegisterServerEvent('ARP_Core:LoadInventory')
+AddEventHandler('ARP_Core:LoadInventory', function()
     ARP.LoadInventory()
 end)

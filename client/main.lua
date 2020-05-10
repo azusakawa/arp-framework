@@ -2,7 +2,7 @@
 -- 接收玩家登入資訊
 ------------------------------------------------------------
 AddEventHandler('playerSpawned', function()     
-    TriggerServerEvent('ARP:SpawnPlayer')
+    TriggerServerEvent('ARP_Core:SpawnPlayer')
 end)
 
 ------------------------------------------------------------
@@ -12,12 +12,12 @@ Citizen.CreateThread(function()
     while true do 
         Citizen.Wait(10000)
         LastPosX, LastPosY, LastPosZ = table.unpack(GetEntityCoords(GetPlayerPed(-1), true)) 
-        TriggerServerEvent('ARP:UpdatePosition', LastPosX, LastPosY, LastPosZ)
+        TriggerServerEvent('ARP_Core:UpdatePosition', LastPosX, LastPosY, LastPosZ)
     end
 end)
 
-RegisterNetEvent('ARP:lastPosition')
-AddEventHandler('ARP:lastPosition', function(PosX, PosY, PosZ)  
+RegisterNetEvent('ARP_Core:lastPosition')
+AddEventHandler('ARP_Core:lastPosition', function(PosX, PosY, PosZ)  
     Citizen.Wait(1000)
     local defaultModel = GetHashKey('mp_m_freemode_01')
     RequestModel(defaultModel)

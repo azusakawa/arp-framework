@@ -108,147 +108,147 @@ local SkinMenu = {
     bracelets = 1,
     braceletssize = 1,
 }
+local ped = PlayerPedId()
 
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'main'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'main'), true, true, true, function()
-        local ped = PlayerPedId()
-        RageUI.Button("Face" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Face", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'FaceCase'))
 
-        RageUI.Button("Skin" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Skin", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'SkinCase'))
 
-        RageUI.Button("Age" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Age", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'AgeCase'))
 
-        RageUI.Button("Beard" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Beard", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'BeardCase'))
 
-        RageUI.Button("Hair" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Hair", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'HairCase'))
 
-        RageUI.Button("Eye" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Eye", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'EyeCase'))
 
-        RageUI.Button("Eye Brows" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Eye Brows", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'EyebrowsCase'))
 
-        RageUI.Button("Makeup" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Makeup", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'MakeupCase'))
 
-        RageUI.Button("Lipstick" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Lipstick", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'LipstickCase'))
 
-        RageUI.Button("Blemishes" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Blemishes", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'BlemishesCase'))
 
-        RageUI.Button("Blush" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Blush", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'BlushCase'))
 
-        RageUI.Button("Complexion" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Complexion", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'ComplexionCase'))
 
-        RageUI.Button("Sun" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Sun", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'SunCase'))
 
-        RageUI.Button("Moles" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Moles", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'MolesCase'))
 
-        RageUI.Button("Chest" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Chest", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'ChestCase'))
 
-        RageUI.Button("Bobyb" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Bobyb", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'BobybCase'))
 
-        RageUI.Button("Ears" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Ears", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'EarsCase'))
-        RageUI.Button("T-Shirt" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("T-Shirt", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'TShirtCase'))
-        RageUI.Button("Torso" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Torso", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'TorsoCase'))
-        RageUI.Button("Decals" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Decals", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'DecalsCase'))
-        RageUI.Button("Arms" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Arms", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'ArmsCase'))
-        RageUI.Button("Pants" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Pants", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'PantsCase'))
-        RageUI.Button("Shoes" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Shoes", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'ShoesCase'))
-        RageUI.Button("Mask" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Mask", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'MaskCase'))
-        RageUI.Button("Bproof" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Bproof", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'BproofCase'))
-        RageUI.Button("Chain" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Chain", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'ChainCase'))
-        RageUI.Button("Bags" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Bags", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'BagsCase'))
-        RageUI.Button("Helmet" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Helmet", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'HelmetCase'))
-        RageUI.Button("Glasses" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Glasses", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'GlassesCase'))
-        RageUI.Button("Watches" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Watches", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'WatchesCase'))
-        RageUI.Button("Bracelets" , nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
+        RageUI.Button("Bracelets", nil, {RightLabel = "→→→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'BraceletsCase'))
@@ -261,7 +261,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'SkinCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'SkinCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Skin', SkinMenu.skin, 45, nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedHeadBlendData(ped, SkinMenu.face, SkinMenu.face, SkinMenu.face, SkinMenu.skin, SkinMenu.skin, SkinMenu.skin, 1.0, 1.0, 1.0, true)
@@ -277,7 +276,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'FaceCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'FaceCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Face', SkinMenu.face, 45, nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedHeadBlendData(ped, SkinMenu.face, SkinMenu.face, SkinMenu.face, SkinMenu.skin, SkinMenu.skin, SkinMenu.skin, 1.0, 1.0, 1.0, true)
@@ -293,7 +291,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'AgeCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'AgeCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Age', SkinMenu.age, (GetNumHeadOverlayValues(3)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedHeadOverlay(ped, 3, SkinMenu.age, (SkinMenu.age2/10) + 0.0)
@@ -315,7 +312,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'BeardCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'BeardCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Beard', SkinMenu.beard, (GetNumHeadOverlayValues(1)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedHeadOverlay(ped, 1, SkinMenu.beard, (SkinMenu.beardsize/10) + 0.0)
@@ -349,7 +345,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'HairCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'HairCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Hair', SkinMenu.hair, (GetNumberOfPedDrawableVariations(ped, 2) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedComponentVariation(ped, 2, SkinMenu.hair, 0, 0)
@@ -383,7 +378,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'EyeCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'EyeCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Eye Color', SkinMenu.eyecolor, 31, nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedEyeColor(ped, SkinMenu.eyecolor, 0, 1)
@@ -399,7 +393,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'EyebrowsCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'EyebrowsCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Eye Brows', SkinMenu.eyebrows, (GetNumHeadOverlayValues(2)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedHeadOverlay(ped, 2, SkinMenu.eyebrows, (SkinMenu.eyebrowssize/10) + 0.0)
@@ -433,7 +426,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'MakeupCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'MakeupCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Makeup', SkinMenu.makeup, (GetNumHeadOverlayValues(4)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedHeadOverlay(ped, 4, SkinMenu.makeup, (SkinMenu.makeupsize/10) + 0.0)
@@ -467,7 +459,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'LipstickCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'LipstickCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Lipstick', SkinMenu.lipstick, (GetNumHeadOverlayValues(8)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedHeadOverlay(ped, 8, SkinMenu.lipstick, (SkinMenu.lipsticksize/10) + 0.0)
@@ -501,7 +492,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'BlemishesCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'BlemishesCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Blemishes', SkinMenu.blemishes, (GetNumHeadOverlayValues(0)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedHeadOverlay(ped, 0, SkinMenu.blemishes, (SkinMenu.blemishessize/10) + 0.0)
@@ -523,7 +513,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'BlushCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'BlushCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Blemishes', SkinMenu.blus, (GetNumHeadOverlayValues(5)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedHeadOverlay(ped, 5, SkinMenu.blus, (SkinMenu.blussize/10) + 0.0)
@@ -551,7 +540,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'ComplexionCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'ComplexionCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Complexion', SkinMenu.complexion, (GetNumHeadOverlayValues(6)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedHeadOverlay(ped, 6, SkinMenu.complexion, (SkinMenu.complexionsize/10) + 0.0)
@@ -573,7 +561,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'SunCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'SunCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Sun', SkinMenu.sun, (GetNumHeadOverlayValues(7)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedHeadOverlay(ped, 7, SkinMenu.sun, (SkinMenu.sunsize/10) + 0.0)
@@ -595,7 +582,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'MolesCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'MolesCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Moles', SkinMenu.moles, (GetNumHeadOverlayValues(9)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedHeadOverlay(ped, 9, SkinMenu.moles, (SkinMenu.molessize/10) + 0.0)
@@ -617,7 +603,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'ChestCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'ChestCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Chest', SkinMenu.chest, (GetNumHeadOverlayValues(10)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedHeadOverlay(ped, 10, SkinMenu.chest, (SkinMenu.chestsize/10) + 0.0)
@@ -645,7 +630,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'BobybCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'BobybCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Bobyb', SkinMenu.bodyb, (GetNumHeadOverlayValues(11)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedHeadOverlay(ped, 11, SkinMenu.bodyb, (SkinMenu.bodybsize/10) + 0.0)
@@ -667,7 +651,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'EarsCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'EarsCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Ears', SkinMenu.ears, (GetNumberOfPedPropDrawableVariations(ped, 1) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 if SkinMenu.ears == 0 then
@@ -693,7 +676,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'TShirtCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'TShirtCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('T-Shirt', SkinMenu.tshirt, (GetNumberOfPedDrawableVariations(ped, 8) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedComponentVariation(ped, 8, SkinMenu.tshirt, SkinMenu.tshirtsize, 2)
@@ -715,7 +697,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'TorsoCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'TorsoCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Torso', SkinMenu.torso, (GetNumberOfPedDrawableVariations(ped, 11) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedComponentVariation(ped, 11, SkinMenu.torso, SkinMenu.tshirtsize, 2)
@@ -737,7 +718,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'DecalsCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'DecalsCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Decals', SkinMenu.decals, (GetNumberOfPedDrawableVariations(ped, 10) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedComponentVariation(ped, 10, SkinMenu.decals, SkinMenu.decalssize, 2)
@@ -759,7 +739,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'ArmsCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'ArmsCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Arms', SkinMenu.arms, (GetNumberOfPedDrawableVariations(ped, 3) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedComponentVariation(ped, 3, SkinMenu.arms, SkinMenu.armssize, 2)
@@ -781,7 +760,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'PantsCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'PantsCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Pants', SkinMenu.pants, (GetNumberOfPedDrawableVariations(ped, 4) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedComponentVariation(ped, 4, SkinMenu.pants, SkinMenu.pantssize, 2)
@@ -803,7 +781,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'ShoesCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'ShoesCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Shoes', SkinMenu.shoes, (GetNumberOfPedDrawableVariations(ped, 6) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedComponentVariation(ped, 6, SkinMenu.shoes, SkinMenu.shoessize, 2)
@@ -825,7 +802,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'MaskCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'MaskCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Mask', SkinMenu.mask, (GetNumberOfPedDrawableVariations(ped, 1) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedComponentVariation(ped, 1, SkinMenu.mask, SkinMenu.masksize, 2)
@@ -847,7 +823,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'BproofCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'BproofCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Bproof', SkinMenu.bproof, (GetNumberOfPedDrawableVariations(ped, 9) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedComponentVariation(ped, 9, SkinMenu.bproof, SkinMenu.bproofsize, 2)
@@ -869,7 +844,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'ChainCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'ChainCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Chain', SkinMenu.chain, (GetNumberOfPedDrawableVariations(ped, 7) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedComponentVariation(ped, 7, SkinMenu.chain, SkinMenu.chainsize, 2)
@@ -891,7 +865,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'BagsCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'BagsCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Bags', SkinMenu.bags, (GetNumberOfPedDrawableVariations(ped, 5) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedComponentVariation(ped, 5, SkinMenu.bags, SkinMenu.bagssize, 2)
@@ -913,7 +886,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'HelmetCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'HelmetCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Helmet', SkinMenu.helmet, (GetNumberOfPedDrawableVariations(ped, 0) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 if SkinMenu.Helmet == 0 then
@@ -939,7 +911,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'GlassesCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'GlassesCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Glasses', SkinMenu.glasses, (GetNumberOfPedDrawableVariations(ped, 1) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 if SkinMenu.glasses == 0 then
@@ -965,7 +936,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'WatchesCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'WatchesCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Watches', SkinMenu.watches, (GetNumberOfPedDrawableVariations(ped, 6) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 if SkinMenu.watches == 0 then
@@ -991,7 +961,6 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'BraceletsCase'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'BraceletsCase'), true, true, true, function()
-        local ped = PlayerPedId()
         RageUI.Progress('Bracelets', SkinMenu.bracelets, (GetNumberOfPedDrawableVariations(ped, 7) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 if SkinMenu.bracelets == 0 then
