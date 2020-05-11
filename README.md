@@ -3,9 +3,6 @@
 # Discord : https://discord.gg/6xXwJyc
 
 ## EN
-# ⌨Assist developers
-- https://github.com/Amo1206
-
 # 🔐Requirement
 - mysql-async https://github.com/brouznouf/fivem-mysql-async
 - RageUI https://github.com/iTexZoz/RageUI
@@ -19,9 +16,6 @@ start arp-framework
 ```
 
 ## zh-TW
-# ⌨協助開發者
-- https://github.com/Amo1206
-
 # 🔐依賴
 - mysql-async https://github.com/brouznouf/fivem-mysql-async
 - RageUI https://github.com/iTexZoz/RageUI
