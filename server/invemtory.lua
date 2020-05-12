@@ -1,9 +1,8 @@
-local ARP = {}
-
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 -- 獲得物品
 --------------------------------------------------------------------------------
-function ARP.GetInventory(item)
+RegisterServerEvent('ARP_Core:GetInventory')
+AddEventHandler('ARP_Core:GetInventory', function(item)
     local source = source
     MySQL.Async.fetchAll('SELECT item FROM user_inventory WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source),
@@ -31,17 +30,13 @@ function ARP.GetInventory(item)
             ARP.LoadInventory(source)
         end
     end)
-end
-
-RegisterServerEvent('ARP_Core:GetInventory')
-AddEventHandler('ARP_Core:GetInventory', function(item)
-    ARP.GetInventory(item)
 end)
 
 --------------------------------------------------------------------------------
 -- 給予物品
 --------------------------------------------------------------------------------
-function ARP.GetInventory(target, limit)
+RegisterServerEvent('ARP_Core:GiveInventory')
+AddEventHandler('ARP_Core:GiveInventory', function(target, limit)
     local source = source
     MySQL.Async.fetchAll('SELECT item FROM user_inventory WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(target),
@@ -69,17 +64,13 @@ function ARP.GetInventory(target, limit)
             end
         end
     end) 
-end
-
-RegisterServerEvent('ARP_Core:GiveInventory')
-AddEventHandler('ARP_Core:GiveInventory', function(target)
-    ARP.GetInventory(target)
 end)
 
 --------------------------------------------------------------------------------
 -- 丟棄物品
 --------------------------------------------------------------------------------
-function ARP.ThrowInventory(limit)
+RegisterServerEvent('ARP_Core:ThrowInventory')
+AddEventHandler('ARP_Core:ThrowInventory', function(limit)
     local source = source
     MySQL.Async.fetchAll('SELECT * FROM items', {}, function(label)
         for i = 1, #label do 
@@ -92,17 +83,13 @@ function ARP.ThrowInventory(limit)
             end
         end
     end)
-end
-
-RegisterServerEvent('ARP_Core:ThrowInventory')
-AddEventHandler('ARP_Core:ThrowInventory', function(limit)
-    ARP.ThrowInventory(limit)
 end)
 
 --------------------------------------------------------------------------------
 -- 取得玩家物品
 --------------------------------------------------------------------------------
-function ARP.LoadInventory()
+RegisterServerEvent('ARP_Core:LoadInventory')
+AddEventHandler('ARP_Core:LoadInventory', function()
     local source = source
     MySQL.Async.fetchAll('SELECT item FROM user_inventory WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source),
@@ -117,9 +104,4 @@ function ARP.LoadInventory()
             end)
         end
     end)
-end
-
-RegisterServerEvent('ARP_Core:LoadInventory')
-AddEventHandler('ARP_Core:LoadInventory', function()
-    ARP.LoadInventory()
 end)

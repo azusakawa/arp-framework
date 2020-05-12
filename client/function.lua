@@ -1,14 +1,18 @@
-ARP = {}
+------------------------------------------------------------
+-- 3D 右上文字
+------------------------------------------------------------
+RegisterNetEvent('ARP_Core:DisplayText3D')
+AddEventHandler('ARP_Core:DisplayText3D', function(text)  
+    SetTextComponentFormat('STRING')
+	AddTextComponentString(text)
+	DisplayHelpTextFromStringLabel(0, 0, 1, -1)
+end)
 
 ------------------------------------------------------------
 -- 3D 文字
 ------------------------------------------------------------
 RegisterNetEvent('ARP_Core:Draw3DTxt')
 AddEventHandler('ARP_Core:Draw3DTxt', function(x, y, z, r, g, b, text)  
-    ARP.Draw3DTxt(x, y, z, r, g, b, text)
-end)
-
-function ARP.Draw3DTxt(x, y, z, r, g, b, text)
     SetTextScale(0.4, 0.4)
     SetTextFont(0)
     SetTextProportional(1)
@@ -23,18 +27,14 @@ function ARP.Draw3DTxt(x, y, z, r, g, b, text)
     SetDrawOrigin(x, y, z, 0)
     DrawText(0.0, 0.0)
     ClearDrawOrigin()
-end
+end)
 
 ------------------------------------------------------------
 -- 通知
 ------------------------------------------------------------
 RegisterNetEvent('ARP_Core:Notify')
 AddEventHandler('ARP_Core:Notify', function(text)  
-    ARP.Notify(text)
-end)
-
-function ARP.Notify(text)
     SetNotificationTextEntry('STRING')
     AddTextComponentString(text)
     DrawNotification(true, true)
-end
+end)
