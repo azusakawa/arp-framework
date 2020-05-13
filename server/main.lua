@@ -65,12 +65,16 @@ end)
 RegisterServerEvent('ARP_Core:SpawnPlayer')
 AddEventHandler('ARP_Core:SpawnPlayer', function()
     local source = source
-    MySQL.Async.fetchScalar('SELECT position FROM users WHERE identifier = @identifier', {
+    MySQL.Async.fetchAll('SELECT * FROM users WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source),
     }, function(result)
-        if result then
-            local Spawnpos = json.decode(result)
-            TriggerClientEvent('ARP_Core:lastPosition', source, Spawnpos[1], Spawnpos[2], Spawnpos[3])
+        for k, v in ipairs(result) do 
+            if v.skin ~= nil then
+                local Spawnpos = json.decode(v.position)
+                TriggerClientEvent('ARP_Core:lastPosition', source, Spawnpos[1], Spawnpos[2], Spawnpos[3], true)
+            else
+                TriggerClientEvent('ARP_Core:lastPosition', source, -269.4, -955.3, 31.2, false)
+            end
         end
     end)
 end)

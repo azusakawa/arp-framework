@@ -80,8 +80,6 @@ local SkinMenu = {
     bracelets = 1,
     braceletssize = 1,
 }
-local ped = PlayerPedId()
-
 ------------------------------------------------------------
 -- 角色相機
 ------------------------------------------------------------
@@ -100,13 +98,42 @@ end
 function DeleteSkinCam()
     SetCamActive(cam, false)
     RenderScriptCams(false, true, 1, true, true)
+    FreezeEntityPosition(PlayerPedId(), false)
 end
 
+function LoadPedModel(bool)
+    if bool == true then
+        defaultModel = GetHashKey('mp_m_freemode_01')
+    else
+        defaultModel = GetHashKey('mp_f_freemode_01')
+    end
+
+    RequestModel(defaultModel)
+    while not HasModelLoaded(defaultModel) do
+        Citizen.Wait(1)
+    end
+    SetPlayerModel(PlayerId(), defaultModel)
+    SetPedDefaultComponentVariation(PlayerPedId())
+    SetModelAsNoLongerNeeded(defaultModel) 
+end
+
+
+local ped = PlayerPedId()
 ------------------------------------------------------------
 -- 膚色 & 性別
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'Skin'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'Skin'), true, true, true, function()
+        RageUI.Button("性別-男性", nil, {}, true, function(hovered, active, selected)
+            if selected then
+                LoadPedModel(true)
+            end
+        end)
+        RageUI.Button("性別-女性", nil, {}, true, function(hovered, active, selected)
+            if selected then
+                LoadPedModel(false)
+            end
+        end)
         RageUI.Progress('膚色', SkinMenu.skin, 45, nil, true, true, function(hovered, active, selected, index)
             if active then
                 SetPedHeadBlendData(ped, SkinMenu.face, SkinMenu.face, SkinMenu.face, SkinMenu.skin, SkinMenu.skin, SkinMenu.skin, 1.0, 1.0, 1.0, true)
@@ -606,15 +633,11 @@ RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'main'), nil, function()
             if selected then
             end
         end, RMenu:Get('skinmenu', 'Other'))
-        RageUI.Button("關閉相機", nil, {}, true, function(hovered, active, selected)
-            if selected then
-                DeleteSkinCam()
-            end
-        end)
         RageUI.Button("保存外觀", nil, {}, true, function(hovered, active, selected)
             if selected then
                 TriggerEvent('ARP_Core:SkinSave')
-                FreezeEntityPosition(PlayerPedId(), false)
+                RageUI.CloseAll()
+                DeleteSkinCam()
             end
         end)
     end, function()
@@ -643,20 +666,23 @@ ARP.ClothingShops = {
 }
 
 Citizen.CreateThread(function()
+    for _, shop in ipairs(ARP.ClothingShops) do 
+        local blip = AddBlipForCoord(shop)
+
+        SetBlipSprite (blip, 73)
+        SetBlipColour (blip, 47)
+        SetBlipAsShortRange(blip, true)
+
+        BeginTextCommandSetBlipName('STRING')
+        AddTextComponentSubstringPlayerName('服飾店')
+        EndTextCommandSetBlipName(blip)
+    end
+end)
+
+Citizen.CreateThread(function()
     while true do 
         Citizen.Wait(0)
-
         for _, shop in ipairs(ARP.ClothingShops) do 
-            local blip = AddBlipForCoord(shop)
-
-            SetBlipSprite (blip, 73)
-            SetBlipColour (blip, 47)
-            SetBlipAsShortRange(blip, true)
-    
-            BeginTextCommandSetBlipName('STRING')
-            AddTextComponentSubstringPlayerName('服飾店')
-            EndTextCommandSetBlipName(blip)
-
             DrawMarker(1, shop, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5, 1.5, 1.0, 165, 42, 42, 100, false, true, 2, false, nil, nil, false)
 
             local PlyToShop = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), shop)
@@ -760,10 +786,6 @@ end)
 ------------------------------------------------------------
 -- 外觀讀取/設置
 ------------------------------------------------------------
-AddEventHandler('playerSpawned', function()     
-    TriggerServerEvent('ARP_Core:LoadSkin')
-end)
-
 RegisterNetEvent('ARP_Core:SetPlayerSkin')
 AddEventHandler('ARP_Core:SetPlayerSkin', function(pedskin)
     Citizen.Wait(1000)
