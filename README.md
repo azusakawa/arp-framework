@@ -17,7 +17,7 @@ start arp-framework
 ```
 
 ## zh-TW
-# 🔐依賴
+# 🔐需求
 - mysql-async https://github.com/brouznouf/fivem-mysql-async
 - RageUI https://github.com/iTexZoz/RageUI
 
