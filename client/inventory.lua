@@ -1,5 +1,3 @@
-ARP = {}
-
 --------------------------------------------------------------------------------
 -- 物品庫
 --------------------------------------------------------------------------------
@@ -33,11 +31,11 @@ RageUI.CreateWhile(1.0, RMenu:Get('Intmenu', 'main'), nil, function()
             RageUI.List(item, IntMenu.action, IntMenu.list, nil, {}, true, function(hovered, active, selected, index)
                 if selected then
                     if index == 1 then
-                        local clsped, distance = ARP.GetClosestPlayer()
+                        local clsped, distance = GetClosestPlayer()
                         if (distance ~= -1 and distance < 5) then
                             TriggerServerEvent('ARP_Core:GiveInventory', clsped, item)
                         else
-                            ARP.Notify('附近 ~r~沒有~s~ 玩家')
+                            TriggerEvent('ARP.Notify', '附近 ~r~沒有~s~ 玩家')
                         end
                     elseif index == 2 then
                         TriggerServerEvent('ARP_Core:ThrowInventory', item)
@@ -64,7 +62,7 @@ end)
 ------------------------------------------------------------
 -- 獲取附近玩家
 ------------------------------------------------------------
-function ARP.GetClosestPlayer()
+function GetClosestPlayer()
     local players = GetPlayers()
     local Distance = -1
     local Player = -1

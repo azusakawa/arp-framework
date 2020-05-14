@@ -8,6 +8,7 @@ RMenu.Add('skinmenu', 'Body', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main')
 RMenu.Add('skinmenu', 'Other', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), '裝飾配件', nil))
 
 local SkinMenu = {
+    sex = 1,
     face = 1,
     skin = 1,
     age = 1,
@@ -124,15 +125,15 @@ local ped = PlayerPedId()
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'Skin'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'Skin'), true, true, true, function()
-        RageUI.Button("性別-男性", nil, {}, true, function(hovered, active, selected)
+        RageUI.Progress('性別', SkinMenu.sex, 2, nil, true, true, function(hovered, active, selected, index)
             if selected then
-                LoadPedModel(true)
+                if index == 1 then
+                    LoadPedModel(true)
+                elseif index == 2 then
+                    LoadPedModel(false)
+                end
             end
-        end)
-        RageUI.Button("性別-女性", nil, {}, true, function(hovered, active, selected)
-            if selected then
-                LoadPedModel(false)
-            end
+            SkinMenu.sex = index
         end)
         RageUI.Progress('膚色', SkinMenu.skin, 45, nil, true, true, function(hovered, active, selected, index)
             if active then
@@ -617,7 +618,7 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'main'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'main'), true, true, true, function()
-        RageUI.Button("膚色", nil, {RightLabel = "→"}, true, function(hovered, active, selected)
+        RageUI.Button("膚色 & 性別", nil, {RightLabel = "→"}, true, function(hovered, active, selected)
             if selected then
             end
         end, RMenu:Get('skinmenu', 'Skin'))

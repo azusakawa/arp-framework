@@ -24,3 +24,11 @@ CREATE TABLE `user_inventory` (
 
 	PRIMARY KEY (`id`)
 )
+
+CREATE TABLE `vehicles` (
+	`model` VARCHAR(50) NOT NULL,
+	`label` VARCHAR(50) NOT NULL,
+	`price` INT(11) NOT NULL,
+
+	PRIMARY KEY (`model`)
+)
