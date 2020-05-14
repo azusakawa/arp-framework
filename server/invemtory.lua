@@ -72,10 +72,10 @@ end)
 RegisterServerEvent('ARP_Core:ThrowInventory')
 AddEventHandler('ARP_Core:ThrowInventory', function(limit)
     local source = source
-    MySQL.Async.fetchAll('SELECT * FROM items', {}, function(label)
+    MySQL.Async.fetchAll('SELECT * FROM arp_items', {}, function(label)
         for i = 1, #label do 
             if label[i].label == limit then
-                MySQL.Async.execute('DELETE FROM user_inventory WHERE item = @item',{
+                MySQL.Async.execute('DELETE FROM arp_user_inventory WHERE item = @item',{
                     ['@item'] = label[i].name,
                 }, function(result)
                     ARP.LoadInventory(source)
@@ -91,11 +91,11 @@ end)
 RegisterServerEvent('ARP_Core:LoadInventory')
 AddEventHandler('ARP_Core:LoadInventory', function()
     local source = source
-    MySQL.Async.fetchAll('SELECT item FROM user_inventory WHERE identifier = @identifier', {
+    MySQL.Async.fetchAll('SELECT item FROM arp_user_inventory WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source),
     }, function(inventory)
         for i = 1, #inventory do
-            MySQL.Async.fetchAll('SELECT * FROM items', {}, function(label)
+            MySQL.Async.fetchAll('SELECT * FROM arp_items', {}, function(label)
                 for j = 1, #label do 
                     if label[j].name == inventory[i].item then
                         TriggerClientEvent('ARP_Core:PlayerInventory', source, label[j].label)

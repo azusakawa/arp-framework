@@ -1,10 +1,10 @@
 ------------------------------------------------------------
 -- 保存外觀
 ------------------------------------------------------------
-RegisterServerEvent('ARP_Core:SkinSave')
-AddEventHandler('ARP_Core:SkinSave', function(skin)
+RegisterServerEvent('ARP_Core:SavePlayerSkin')
+AddEventHandler('ARP_Core:SavePlayerSkin', function(skin)
     local source = source
-    MySQL.Async.execute('UPDATE users SET skin = @skin WHERE identifier = @identifier', {
+    MySQL.Async.execute('UPDATE arp_users SET skin = @skin WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source),
         ['@skin'] = json.encode(skin)
     })
@@ -16,7 +16,7 @@ end)
 RegisterServerEvent('ARP_Core:LoadSkin')
 AddEventHandler('ARP_Core:LoadSkin', function()
     local source = source
-    MySQL.Async.fetchScalar('SELECT skin FROM users WHERE identifier = @identifier', {
+    MySQL.Async.fetchScalar('SELECT skin FROM arp_users WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source),
     }, function(result)
         if result then

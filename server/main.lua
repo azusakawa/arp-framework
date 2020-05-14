@@ -38,12 +38,12 @@ function PlayerJoin(playerId)
     end
 
     if identifier then
-        MySQL.Async.fetchScalar('SELECT 1 FROM users WHERE identifier = @identifier', {
+        MySQL.Async.fetchScalar('SELECT 1 FROM arp_users WHERE identifier = @identifier', {
             ['@identifier'] = identifier
         }, function(result)
             if result then
             else
-                MySQL.Async.execute('INSERT INTO users (identifier) VALUES (@identifier)', {
+                MySQL.Async.execute('INSERT INTO arp_users (identifier) VALUES (@identifier)', {
                     ['@identifier'] = identifier
                 })
             end
@@ -56,7 +56,7 @@ end
 ------------------------------------------------------------
 RegisterServerEvent('ARP_Core:UpdatePosition')
 AddEventHandler('ARP_Core:UpdatePosition', function(PosX, PosY, PosZ)
-    MySQL.Async.execute('UPDATE users SET position = @position WHERE identifier = @identifier', {
+    MySQL.Async.execute('UPDATE arp_users SET position = @position WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source),
         ['@position'] = '{' .. PosX .. ', ' .. PosY .. ', ' .. PosZ .. '}',
     })
@@ -65,7 +65,7 @@ end)
 RegisterServerEvent('ARP_Core:SpawnPlayer')
 AddEventHandler('ARP_Core:SpawnPlayer', function()
     local source = source
-    MySQL.Async.fetchAll('SELECT * FROM users WHERE identifier = @identifier', {
+    MySQL.Async.fetchAll('SELECT * FROM arp_users WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source),
     }, function(result)
         for k, v in ipairs(result) do 

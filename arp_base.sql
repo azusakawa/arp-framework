@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS `arp`;
 USE `arp`;
 
-CREATE TABLE `users` (
+CREATE TABLE `arp_users` (
 	`identifier` VARCHAR(40) NOT NULL,
 	`position` VARCHAR(53) NULL DEFAULT '{-269.4,-955.3,31.2}',
 	`skin` LONGTEXT NULL DEFAULT NULL,
@@ -10,22 +10,22 @@ CREATE TABLE `users` (
 	PRIMARY KEY (`identifier`)
 );
 
-CREATE TABLE `items` (
+CREATE TABLE `arp_items` (
 	`name` VARCHAR(50) NOT NULL,
 	`label` VARCHAR(50) NOT NULL,
 
 	PRIMARY KEY (`name`)
 );
 
-CREATE TABLE `user_inventory` (
+CREATE TABLE `arp_user_inventory` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
 	`identifier` VARCHAR(40) NOT NULL,
 	`item` VARCHAR(20) NOT NULL,
 
 	PRIMARY KEY (`id`)
-)
+);
 
-CREATE TABLE `vehicles` (
+CREATE TABLE `arp_vehicles` (
 	`model` VARCHAR(50) NOT NULL,
 	`label` VARCHAR(50) NOT NULL,
 	`price` INT(11) NOT NULL,

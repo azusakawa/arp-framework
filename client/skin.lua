@@ -684,7 +684,7 @@ Citizen.CreateThread(function()
     while true do 
         Citizen.Wait(0)
         for _, shop in ipairs(ARP.ClothingShops) do 
-            DrawMarker(1, shop, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5, 1.5, 1.0, 165, 42, 42, 100, false, true, 2, false, nil, nil, false)
+            DrawMarker(1, shop, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5, 1.5, 1.0, 165, 42, 42, 150, false, true, 2, false, nil, nil, false)
 
             local PlyToShop = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), shop)
             if PlyToShop < 1.5 then
@@ -705,7 +705,7 @@ RegisterNetEvent('ARP_Core:SkinSave')
 AddEventHandler('ARP_Core:SkinSave', function()  
     local playerskin = {}
     local skin = {
-        GetEntityModel(PlayerId()),
+        SkinMenu.sex,
         SkinMenu.face,
         SkinMenu.skin,
         SkinMenu.age,
@@ -781,7 +781,8 @@ AddEventHandler('ARP_Core:SkinSave', function()
     for i = 1, #skin do 
         table.insert(playerskin, skin[i])
     end  
-    TriggerServerEvent('ARP_Core:SkinSave', playerskin)
+
+    TriggerServerEvent('ARP_Core:SavePlayerSkin', playerskin)
 end)
 
 ------------------------------------------------------------
@@ -790,9 +791,9 @@ end)
 RegisterNetEvent('ARP_Core:SetPlayerSkin')
 AddEventHandler('ARP_Core:SetPlayerSkin', function(pedskin)
     Citizen.Wait(1000)
-    if pedskin[1] == 0 then
+    if pedskin[1] == 1 then
         defaultModel = GetHashKey('mp_m_freemode_01')
-    elseif pedskin[1] == 1 then
+    elseif pedskin[1] == 2 then
         defaultModel = GetHashKey('mp_f_freemode_01')
     end
     RequestModel(defaultModel)

@@ -5,7 +5,7 @@ RegisterServerEvent('ARP_Core:UpdateDeath')
 AddEventHandler('ARP_Core:UpdateDeath', function(IsDead)
     local source = source
     if type(IsDead) == 'boolean' then
-        MySQL.Async.execute('UPDATE users SET isdead = @isdead WHERE identifier = @identifier', {
+        MySQL.Async.execute('UPDATE arp_users SET isdead = @isdead WHERE identifier = @identifier', {
             ['@identifier'] = GetPlayerIdentifier(source),
             ['@isdead'] = IsDead,
         })
@@ -18,7 +18,7 @@ end)
 RegisterServerEvent('ARP_Core:CheckIsDead')
 AddEventHandler('ARP_Core:CheckIsDead', function()
     local source = source
-    MySQL.Async.fetchScalar('SELECT isdead FROM users WHERE identifier = @identifier', {
+    MySQL.Async.fetchScalar('SELECT isdead FROM arp_users WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source),
     }, function(dead)
         if dead == 1 then

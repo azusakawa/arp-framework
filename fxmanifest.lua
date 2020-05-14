@@ -30,3 +30,7 @@ server_scripts {
     'server/function.lua',
     'server/*.lua',
 }
+
+dependencies {
+	'mysql-async',
+}
