@@ -149,8 +149,6 @@ Citizen.CreateThread(function()
                 RageUI.Visible(RMenu:Get('Vehmenu', 'main'), not RageUI.Visible(RMenu:Get('Vehmenu', 'main')))
                 TriggerServerEvent('ARP_Core:LoadVehicles')
             end
-        else
-            RageUI.CloseAll()
         end
     end
 end)
