@@ -9,7 +9,7 @@
 - RageUI https://github.com/iTexZoz/RageUI
 
 # 🖊How to use it
-- download `mysql-asyne` and `arp-framework`
+- download `mysql-async` and `arp-framework`
 - open `server.cfg` and install like this
 ```
 start mysql-async
@@ -22,7 +22,7 @@ start arp-framework
 - RageUI https://github.com/iTexZoz/RageUI
 
 # 🖊如何使用
-- 下載 `mysql-asyne` 和 `arp-framework`
+- 下載 `mysql-async` 和 `arp-framework`
 - 打開 `server.cfg` 並安裝，看起來像這樣
 ```
 start mysql-async
