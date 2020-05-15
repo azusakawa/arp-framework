@@ -1,3 +1,6 @@
+------------------------------------------------------------
+-- 讀取車輛
+------------------------------------------------------------
 RegisterServerEvent('ARP_Core:LoadVehicles')
 AddEventHandler('ARP_Core:LoadVehicles', function()
     local source = source
@@ -8,4 +11,17 @@ AddEventHandler('ARP_Core:LoadVehicles', function()
             end
         end
     end)
+end)
+
+------------------------------------------------------------
+-- 設定玩加車輛
+------------------------------------------------------------
+RegisterServerEvent('ARP_Core:SetVehicleToPlayer')
+AddEventHandler('ARP_Core:SetVehicleToPlayer', function(plate, model)
+    local source = source
+    MySQL.Async.execute('INSERT INTO arp_user_vehicles (identifier, plate, model) VALUES (@identifier, @plate, @model)', {
+        ['@identifier'] = GetPlayerIdentifier(source),
+        ['@plate'] = plate,
+        ['@model'] = json.encode(model)
+    })
 end)

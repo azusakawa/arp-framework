@@ -31,4 +31,12 @@ CREATE TABLE `arp_vehicles` (
 	`price` INT(11) NOT NULL,
 
 	PRIMARY KEY (`model`)
+);
+
+CREATE TABLE `arp_user_vehicles` (
+	`identifier` VARCHAR(40) NOT NULL,
+	`plate` VARCHAR(12) NOT NULL,
+	`model` LONGTEXT NOT NULL DEFAULT ''
+
+	PRIMARY KEY (`plate`)
 )
