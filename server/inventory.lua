@@ -98,7 +98,7 @@ AddEventHandler('ARP_Core:LoadInventory', function()
             MySQL.Async.fetchAll('SELECT * FROM arp_items', {}, function(label)
                 for j = 1, #label do 
                     if label[j].name == inventory[i].item then
-                        TriggerClientEvent('ARP_Core:PlayerInventory', source, label[j].label)
+                        TriggerClientEvent('ARP_Core:InentoryMenu', source, label[j].label)
                     end
                 end
             end)

@@ -8,10 +8,10 @@ function IsPedDeath()
     TriggerServerEvent('ARP_Core:UpdateDeath', IsDead)
     local player = GetEntityCoords(PlayerPedId())
 	if seconds > 1 then 
-        TriggerEvent('ARP_Core:draw3Dtxt', player.x, player.y, player.z, 255, 255, 255, '~w~你已經死亡! 還有 ~r~' .. seconds .. '~w~ 秒後可以復活')
+        TriggerEvent('ARP_Core:Draw3DTxt', player.x, player.y, player.z, 255, 255, 255, '~w~你已經死亡! 還有 ~r~' .. seconds .. '~w~ 秒後可以復活')
 	end
    	if seconds < 1 then 
-        TriggerEvent('ARP_Core:draw3Dtxt', player.x, player.y, player.z, 255, 255, 255, '~w~按 ~w~[~r~E~w~] 復活')
+        TriggerEvent('ARP_Core:Draw3DTxt', player.x, player.y, player.z, 255, 255, 255, '~w~按 ~w~[~r~E~w~] 復活')
     end 
     if IsControlJustReleased(1, 38) and seconds < 1 then 
         local playerPos = GetEntityCoords(GetPlayerPed(-1), true)
@@ -58,8 +58,4 @@ RegisterNetEvent('ARP_Core:PlayerIsDead')
 AddEventHandler('ARP_Core:PlayerIsDead', function()
     TriggerEvent('ARP_Core:notify', '您在~r~死亡~w~時離線，請呼叫~g~醫護人員')
     SetEntityHealth(GetPlayerPed(-1), 0)
-end)
-
-AddEventHandler('playerSpawned', function()
-    TriggerServerEvent('ARP_Core:CheckIsDead')
 end)

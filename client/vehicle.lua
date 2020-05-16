@@ -69,6 +69,7 @@ function BuyVehicle(model)
     SetEntityAsMissionEntity(PlayerVeh, true, false)
     SetVehicleNumberPlateText(PlayerVeh, plate)
     SetVehRadioStation(PlayerVeh, 'OFF')
+    SetVehicleHasBeenOwnedByPlayer(PlayerVeh, true)
     SetPedIntoVehicle(PlayerPedId(), PlayerVeh, -1)
     SetModelAsNoLongerNeeded(PlayerVeh)
    
@@ -103,14 +104,15 @@ RageUI.CreateWhile(1.0, RMenu:Get('Vehmenu', 'main'), nil, function()
                 DeleteEntity(veh)
             end
         end)
-        for _, mod in pairs(vehicles) do 
-            RageUI.List(mod.label .. ' ~g~$~s~ ' .. mod.price, VehMenu.action, VehMenu.list, nil, {}, true, function(hovered, active, selected, index)
+        for _, v in pairs(vehicles) do 
+            RageUI.List(v.label .. ' ~g~$~s~ ' .. v.price, VehMenu.action, VehMenu.list, nil, {}, true, function(hovered, active, selected, index)
                 if selected then
                     if index == 1 then
                         TriggerEvent('ARP_Core:Notify', '車輛~g~生成中~s~，請稍後')
-                        ShowVehicle(mod.model)
+                        ShowVehicle(v.model)
                     elseif index == 2 then
-                        BuyVehicle(mod.model)
+                        BuyVehicle(v.model)
+                        DeleteEntity(veh)
                         RageUI.CloseAll()
                     end
                 end

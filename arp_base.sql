@@ -35,8 +35,10 @@ CREATE TABLE `arp_vehicles` (
 
 CREATE TABLE `arp_user_vehicles` (
 	`identifier` VARCHAR(40) NOT NULL,
+	`position` VARCHAR(50) NULL,
 	`plate` VARCHAR(12) NOT NULL,
 	`model` LONGTEXT NOT NULL DEFAULT '',
+	`statu` INT(11) NOT NULL DEFAULT 0,
 
 	PRIMARY KEY (`plate`)
 )

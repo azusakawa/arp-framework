@@ -32,6 +32,7 @@ AddEventHandler('ARP_Core:lastPosition', function(PosX, PosY, PosZ, bool)
     else
         TriggerServerEvent('ARP_Core:LoadSkin')
     end
-
+    
+    TriggerServerEvent('ARP_Core:CheckIsDead')
     SetEntityCoords(GetPlayerPed(-1), PosX, PosY, PosZ, 1, 0, 0, 1)
 end)

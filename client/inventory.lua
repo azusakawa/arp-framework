@@ -3,8 +3,8 @@
 --------------------------------------------------------------------------------
 local inventory = {}
 
-RegisterNetEvent('ARP_Core:PlayerInventory')
-AddEventHandler('ARP_Core:PlayerInventory', function(items)
+RegisterNetEvent('ARP_Core:InentoryMenu')
+AddEventHandler('ARP_Core:InentoryMenu', function(items)
     for i = 1, #inventory do 
         table.remove(inventory, i)
     end

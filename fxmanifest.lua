@@ -21,13 +21,11 @@ client_scripts {
     'RageUI/src/menu/panels/*.lua',
     'RageUI/src/menu/windows/*.lua',
 
-    'client/function.lua',
     'client/*.lua',
 }
 
 server_scripts {
     '@mysql-async/lib/MySQL.lua',
-    'server/function.lua',
     'server/*.lua',
 }
 
