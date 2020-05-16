@@ -11,18 +11,6 @@ AddEventHandler('ARP_Core:GetVehicles', function()
             local model = json.decode(v.model)
             TriggerClientEvent('ARP_Core:GarageMenu', source, v.plate, model[2], v.position, v.statu)
         end
-
-        
-        -- for _, v in pairs(garage) do 
-        --     if v.position == name then
-        --        if v.statu == 0 then
-        --        else
-        --         TriggerClientEvent('ARP_Core:Notify', source, '你的車輛並不在~g~車庫~s~，請前往~r~扣押場')
-        --        end
-        --     else
-        --         TriggerClientEvent('ARP_Core:Notify', source, '你的車輛並不在~g~此車庫~s~，請前往~r~其他~s~車庫')
-        --     end
-        -- end
     end)
 end)
 

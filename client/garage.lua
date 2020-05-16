@@ -22,70 +22,70 @@ local garagepos = {
         Marker = vector3(213.62, -809.25, 30.01),
         Spawn = vector3(227.63, -804.68, 29.56),
         Delete = vector3(223.80, -760.42, 29.65),
-        Handing = 164.62
+        Heading = 164.62
     },
     Adams_Apple_Blvd = {
         Name = 'AdamsAppleBlvd',
         Marker = vector3(453.29, -1145.99, 28.51),
         Spawn = vector3(443.37, -1148.77, 28.29),
         Delete = vector3(436.6, -1168.95, 28.29),
-        Handing = 1.73
+        Heading = 1.73
     },
     Vespucci_Blvd = {
         Name = 'VespucciBlvd',
         Marker = vector3(-281.02, -888.06, 30.32),
         Spawn = vector3(-276.38, -899.35, 30.08),
         Delete = vector3(-284.76, -918.22, 30.08),
-        Handing = 339.9
+        Heading = 339.9
     },
     Maze_Bank_Arena = {
         Name = 'MazeBankArena',
         Marker = vector3(-73.21, -2004.12, 17.28),
         Spawn = vector3(-79.24, -2017.01, 17.02),
         Delete = vector3(-108.14, -1985.11, 17.02),
-        Handing = 84.03
+        Heading = 84.03
     },
     Autopia_Pkwy = {
         Name = 'AutopiaPkwy',
         Marker = vector3(-795.86, -2023.41, 8.17),
         Spawn = vector3(-778.68, -2028.13, 7.87),
         Delete = vector3(-779.25, -2039.68, 7.88),
-        Handing = 39.86
+        Heading = 39.86
     },
     Del_Perro_Fwy = {
         Name = 'DelPerroFwy',
         Marker = vector3(-2030.65, -465.32, 10.6),
         Spawn = vector3(-2020.61, -462.11, 10.55),
         Delete = vector3(-2054.53, -437.79, 10.52),
-        Handing = 323.13
+        Heading = 323.13
     },
     Great_Ocean_Hwy = {
         Name = 'GreatOceanHwy',
         Marker = vector3(83.9, 6420.5, 30.76),
         Spawn = vector3(105.44, 6404.18, 30.34),
         Delete = vector3(98.34, 6374.79, 30.23),
-        Handing = 48.77
+        Heading = 48.77
     },
     Spanish_Ave = {
         Name = 'SpanishAve',
         Marker = vector3(68.13, 13.2, 68.21),
         Spawn = vector3(72.21, 13.07, 68.91),
         Delete = vector3(73.87, 23.55, 68.3),
-        Handing = 156.76
+        Heading = 156.76
     },
     Clinton_Ave_1 = {
         Name = 'ClintonAve1',
         Marker = vector3(638.52, 206.68, 96.6),
         Spawn = vector3(651.07, 200.88, 94.81),
         Delete = vector3(628.05, 196.55, 96.24),
-        Handing = 73.62
+        Heading = 73.62
     },
     Clinton_Ave_2 = {
         Name = 'ClintonAve2',
         Marker = vector3(362.43, 298.56, 102.88),
         Spawn = vector3(369.82, 292.3, 102.35),
         Delete = vector3(359.82, 272.31, 102.1),
-        Handing = 349.29
+        Heading = 349.29
     },
 }
 
@@ -101,6 +101,31 @@ Citizen.CreateThread(function()
         AddTextComponentSubstringPlayerName('車庫')
         EndTextCommandSetBlipName(blip)
     end
+end)
+
+------------------------------------------------------------
+-- 車輛選單
+------------------------------------------------------------
+RMenu.Add('Garagemenu', 'main', RageUI.CreateMenu('車庫', '車庫選單'))
+local GarageMenu = {
+    action = {
+        '駕駛'
+    },
+}
+
+RageUI.CreateWhile(1.0, RMenu:Get('Garagemenu', 'main'), nil, function()
+    RageUI.IsVisible(RMenu:Get('Garagemenu', 'main'), true, true, true, function()
+        for k, v in pairs(garage) do 
+            RageUI.List(v.plate, GarageMenu.action, 1, nil, {}, true, function(hovered, active, selected, index)
+                if selected then
+                    if index == 1 then
+                        DriveVehicle(v.plate, v.model, v.position, v.statu)
+                    end
+                end
+            end)
+        end
+    end, function()
+    end)
 end)
 
 Citizen.CreateThread(function()
@@ -143,3 +168,44 @@ AddEventHandler('ARP_Core:DeleteStoreVehicle', function()
     local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
     DeleteEntity(vehicle)
 end)
+
+------------------------------------------------------------
+-- 取出車輛
+------------------------------------------------------------
+function DriveVehicle(plate, model, position, statu)
+    for _, k in pairs(garagepos) do
+        local PlyToPos = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), k.Marker)
+        if PlyToPos < 1.5 then    
+            if statu == 0 then
+                if position == k.Name then
+                    SpawnVehicle(plate, model, k.Spawn, k.Heading)
+                    RageUI.CloseAll()
+                else
+                    TriggerEvent('ARP_Core:Notify', '你的車輛並不在~g~此車庫~s~，請前往~r~其他~s~車庫')
+                end
+            else
+                TriggerEvent('ARP_Core:Notify', '你的車輛並不在~g~車庫~s~，請前往~r~扣押場')
+            end
+        end
+    end
+end
+
+function SpawnVehicle(plate, model, position, heading)
+    LoadModel(model)
+    local PlayerVeh = CreateVehicle(model, position, heading, true, false)
+    SetEntityAsMissionEntity(PlayerVeh, true, false)
+    SetVehicleNumberPlateText(PlayerVeh, plate)
+    SetVehRadioStation(PlayerVeh, 'OFF')
+    SetVehicleHasBeenOwnedByPlayer(PlayerVeh, true)
+    SetPedIntoVehicle(PlayerPedId(), PlayerVeh, -1)
+end
+
+------------------------------------------------------------
+-- Function
+------------------------------------------------------------
+function LoadModel(model)
+    while not HasModelLoaded(model) do
+        RequestModel(model)
+        Citizen.Wait(10)
+    end
+end

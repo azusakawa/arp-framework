@@ -17,10 +17,7 @@ end)
 -- 觀賞車輛
 ------------------------------------------------------------
 function ShowVehicle(model)
-    RequestModel(model)
-	while not HasModelLoaded(model) do
-		Wait(1)
-    end
+    LoadModel(model)
     
     if HasModelLoaded(model) then
         veh = CreateVehicle(GetHashKey(model), -47.29, -1096.97, 26.42, 159.2, true, false)
@@ -63,6 +60,7 @@ end
 -- 購買車輛
 ------------------------------------------------------------
 function BuyVehicle(model)
+    LoadModel(model)
     local vehmodel = {}
     local plate = SetPlateChar(3) .. SetPlateNum(3)
     local PlayerVeh = CreateVehicle(GetHashKey(model), -30.35, -1089.75, 25.42, 339.4, true, false)
@@ -147,7 +145,6 @@ Citizen.CreateThread(function()
         if PlyToShop < 1.5 then
             TriggerEvent('ARP_Core:DisplayText3D', '按 ~g~E~s~ 開啟選單')
             if IsControlJustReleased(0, 38) then
-                TriggerEvent('ARP_Core:Notify', '請先~g~觀賞~s~後再購買，否則~r~後果自負')
                 RageUI.Visible(RMenu:Get('Vehmenu', 'main'), not RageUI.Visible(RMenu:Get('Vehmenu', 'main')))
                 TriggerServerEvent('ARP_Core:LoadVehicles')
             end
@@ -155,5 +152,12 @@ Citizen.CreateThread(function()
     end
 end)
 
-
-    
+------------------------------------------------------------
+-- Function
+------------------------------------------------------------
+function LoadModel(model)
+    while not HasModelLoaded(model) do
+          RequestModel(model)
+          Citizen.Wait(10)
+    end
+end
