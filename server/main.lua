@@ -54,16 +54,16 @@ end
 ------------------------------------------------------------
 -- 紀錄玩家位置/生成
 ------------------------------------------------------------
-RegisterServerEvent('ARP_Core:UpdatePosition')
-AddEventHandler('ARP_Core:UpdatePosition', function(PosX, PosY, PosZ)
+RegisterServerEvent('ARP:UpdatePosition')
+AddEventHandler('ARP:UpdatePosition', function(PosX, PosY, PosZ)
     MySQL.Async.execute('UPDATE arp_users SET position = @position WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source),
         ['@position'] = '{' .. PosX .. ', ' .. PosY .. ', ' .. PosZ .. '}',
     })
 end)
 
-RegisterServerEvent('ARP_Core:SpawnPlayer')
-AddEventHandler('ARP_Core:SpawnPlayer', function()
+RegisterServerEvent('ARP:SpawnPlayer')
+AddEventHandler('ARP:SpawnPlayer', function()
     local source = source
     MySQL.Async.fetchAll('SELECT * FROM arp_users WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source),
@@ -71,9 +71,9 @@ AddEventHandler('ARP_Core:SpawnPlayer', function()
         for k, v in ipairs(result) do 
             if v.skin ~= nil then
                 local Spawnpos = json.decode(v.position)
-                TriggerClientEvent('ARP_Core:lastPosition', source, Spawnpos[1], Spawnpos[2], Spawnpos[3], true)
+                TriggerClientEvent('ARP:lastPosition', source, Spawnpos[1], Spawnpos[2], Spawnpos[3], true)
             else
-                TriggerClientEvent('ARP_Core:lastPosition', source, -269.4, -955.3, 31.2, false)
+                TriggerClientEvent('ARP:lastPosition', source, -269.4, -955.3, 31.2, false)
             end
         end
     end)

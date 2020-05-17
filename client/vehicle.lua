@@ -3,8 +3,8 @@
 ------------------------------------------------------------
 local vehicles = {}
 
-RegisterNetEvent('ARP_Core:VehicleMenu')
-AddEventHandler('ARP_Core:VehicleMenu', function(model, label, price)
+RegisterNetEvent('ARP:VehicleMenu')
+AddEventHandler('ARP:VehicleMenu', function(model, label, price)
     for i = 1, #vehicles do 
         table.remove(vehicles, i)
     end
@@ -17,7 +17,7 @@ end)
 -- 觀賞車輛
 ------------------------------------------------------------
 function ShowVehicle(model)
-    LoadModel(model)
+    ARP.LoadModel(model)
     
     if HasModelLoaded(model) then
         veh = CreateVehicle(GetHashKey(model), -47.29, -1096.97, 26.42, 159.2, true, false)
@@ -60,7 +60,7 @@ end
 -- 購買車輛
 ------------------------------------------------------------
 function BuyVehicle(model)
-    LoadModel(model)
+    ARP.LoadModel(model)
     local vehmodel = {}
     local plate = SetPlateChar(3) .. SetPlateNum(3)
     local PlayerVeh = CreateVehicle(GetHashKey(model), -30.35, -1089.75, 25.42, 339.4, true, false)
@@ -80,7 +80,7 @@ function BuyVehicle(model)
         table.insert(vehmodel, models[i])
     end
     
-    TriggerServerEvent('ARP_Core:SetVehicleToPlayer', GetVehicleNumberPlateText(PlayerVeh), vehmodel)
+    TriggerServerEvent('ARP:SetVehicleToPlayer', GetVehicleNumberPlateText(PlayerVeh), vehmodel)
 end
 
 ------------------------------------------------------------
@@ -106,7 +106,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('Vehmenu', 'main'), nil, function()
             RageUI.List(v.label .. ' ~g~$~s~ ' .. v.price, VehMenu.action, VehMenu.list, nil, {}, true, function(hovered, active, selected, index)
                 if selected then
                     if index == 1 then
-                        TriggerEvent('ARP_Core:Notify', '車輛~g~生成中~s~，請稍後')
+                        ARP.Notify('車輛~g~生成中~s~，請稍後')
                         ShowVehicle(v.model)
                     elseif index == 2 then
                         BuyVehicle(v.model)
@@ -143,21 +143,11 @@ Citizen.CreateThread(function()
 
         local PlyToShop = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), -33.92, -1103.03, 26.42)
         if PlyToShop < 1.5 then
-            TriggerEvent('ARP_Core:DisplayText3D', '按 ~g~E~s~ 開啟選單')
+            ARP.DisplayText3D('按 ~g~E~s~ 開啟選單')
             if IsControlJustReleased(0, 38) then
                 RageUI.Visible(RMenu:Get('Vehmenu', 'main'), not RageUI.Visible(RMenu:Get('Vehmenu', 'main')))
-                TriggerServerEvent('ARP_Core:LoadVehicles')
+                TriggerServerEvent('ARP:LoadVehicles')
             end
         end
     end
 end)
-
-------------------------------------------------------------
--- Function
-------------------------------------------------------------
-function LoadModel(model)
-    while not HasModelLoaded(model) do
-          RequestModel(model)
-          Citizen.Wait(10)
-    end
-end

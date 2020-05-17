@@ -3,8 +3,8 @@
 ------------------------------------------------------------
 local garage = {}
 
-RegisterNetEvent('ARP_Core:GarageMenu')
-AddEventHandler('ARP_Core:GarageMenu', function(plate, model, position, statu)
+RegisterNetEvent('ARP:GarageMenu')
+AddEventHandler('ARP:GarageMenu', function(plate, model, position, statu)
     for i = 1, #garage do 
         table.remove(garage, i)
     end
@@ -138,16 +138,16 @@ Citizen.CreateThread(function()
             local PlyToDelete = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), v.Delete)
             local PlyToSpawn = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), v.Marker)
             if PlyToDelete < 3.0 then
-                TriggerEvent('ARP_Core:DisplayText3D', '按 ~INPUT_PICKUP~ 儲存車輛')
+                ARP.DisplayText3D('按 ~INPUT_PICKUP~ 儲存車輛')
                 if IsControlJustReleased(0, 38) then
                     CheckVehicle(v.Name)
                 end
             end
             if PlyToSpawn < 1.5 then
-                TriggerEvent('ARP_Core:DisplayText3D', '按 ~INPUT_PICKUP~ 開啟車庫')
+                ARP.DisplayText3D('按 ~INPUT_PICKUP~ 開啟車庫')
                 if IsControlJustReleased(0, 38) then
                     RageUI.Visible(RMenu:Get('Garagemenu', 'main'), not RageUI.Visible(RMenu:Get('Garagemenu', 'main')))
-                    TriggerServerEvent('ARP_Core:GetVehicles')
+                    TriggerServerEvent('ARP:GetVehicles')
                 end
             end
         end
@@ -160,11 +160,11 @@ end)
 function CheckVehicle(position)
     local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
     local plate = GetVehicleNumberPlateText(vehicle)
-    TriggerServerEvent('ARP_Core:StoreVehicle', plate, position)
+    TriggerServerEvent('ARP:StoreVehicle', plate, position)
 end
 
-RegisterNetEvent('ARP_Core:DeleteStoreVehicle')
-AddEventHandler('ARP_Core:DeleteStoreVehicle', function()
+RegisterNetEvent('ARP:DeleteStoreVehicle')
+AddEventHandler('ARP:DeleteStoreVehicle', function()
     local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
     DeleteEntity(vehicle)
 end)
@@ -181,31 +181,21 @@ function DriveVehicle(plate, model, position, statu)
                     SpawnVehicle(plate, model, k.Spawn, k.Heading)
                     RageUI.CloseAll()
                 else
-                    TriggerEvent('ARP_Core:Notify', '你的車輛並不在~g~此車庫~s~，請前往~r~其他~s~車庫')
+                    ARP.Notify('你的車輛並不在~g~此車庫~s~，請前往~r~其他~s~車庫')
                 end
             else
-                TriggerEvent('ARP_Core:Notify', '你的車輛並不在~g~車庫~s~，請前往~r~扣押場')
+                ARP.Notify('你的車輛並不在~g~車庫~s~，請前往~r~扣押場')
             end
         end
     end
 end
 
 function SpawnVehicle(plate, model, position, heading)
-    LoadModel(model)
+    ARP.LoadModel(model)
     local PlayerVeh = CreateVehicle(model, position, heading, true, false)
     SetEntityAsMissionEntity(PlayerVeh, true, false)
     SetVehicleNumberPlateText(PlayerVeh, plate)
     SetVehRadioStation(PlayerVeh, 'OFF')
     SetVehicleHasBeenOwnedByPlayer(PlayerVeh, true)
     SetPedIntoVehicle(PlayerPedId(), PlayerVeh, -1)
-end
-
-------------------------------------------------------------
--- Function
-------------------------------------------------------------
-function LoadModel(model)
-    while not HasModelLoaded(model) do
-        RequestModel(model)
-        Citizen.Wait(10)
-    end
 end

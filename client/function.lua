@@ -1,18 +1,18 @@
+ARP = {}
+
 ------------------------------------------------------------
 -- 3D 右上文字
 ------------------------------------------------------------
-RegisterNetEvent('ARP_Core:DisplayText3D')
-AddEventHandler('ARP_Core:DisplayText3D', function(text)  
+ARP.DisplayText3D = function(text)  
     SetTextComponentFormat('STRING')
 	AddTextComponentString(text)
 	DisplayHelpTextFromStringLabel(0, 0, 1, -1)
-end)
+end
 
 ------------------------------------------------------------
 -- 3D 文字
 ------------------------------------------------------------
-RegisterNetEvent('ARP_Core:Draw3DTxt')
-AddEventHandler('ARP_Core:Draw3DTxt', function(x, y, z, r, g, b, text)  
+ARP.Draw3DTxt = function(x, y, z, r, g, b, text)  
     SetTextScale(0.4, 0.4)
     SetTextFont(0)
     SetTextProportional(1)
@@ -27,14 +27,41 @@ AddEventHandler('ARP_Core:Draw3DTxt', function(x, y, z, r, g, b, text)
     SetDrawOrigin(x, y, z, 0)
     DrawText(0.0, 0.0)
     ClearDrawOrigin()
-end)
+end
 
 ------------------------------------------------------------
 -- 通知
 ------------------------------------------------------------
-RegisterNetEvent('ARP_Core:Notify')
-AddEventHandler('ARP_Core:Notify', function(text)  
+ARP.Notify = function(text)
     SetNotificationTextEntry('STRING')
     AddTextComponentString(text)
     DrawNotification(true, true)
+end
+
+------------------------------------------------------------
+-- 讀取Model
+------------------------------------------------------------
+ARP.LoadModel = function(model)
+    while not HasModelLoaded(model) do
+        RequestModel(model)
+        Citizen.Wait(10)
+    end
+end
+
+------------------------------------------------------------
+-- 伺服器回傳
+------------------------------------------------------------
+RegisterNetEvent('ARP:DisplayText3D')
+AddEventHandler('ARP:DisplayText3D', function(text)  
+    ARP.DisplayText3D(text)
+end)
+
+RegisterNetEvent('ARP:Draw3DTxt')
+AddEventHandler('ARP:Draw3DTxt', function(x, y, z, r, g, b, text)  
+    ARP.Draw3DTxt(x, y, z, r, g, b, text)
+end)
+
+RegisterNetEvent('ARP:Notify')
+AddEventHandler('ARP:Notify', function(text)  
+    ARP.Notify(text)
 end)

@@ -1,5 +1,5 @@
 # ARP-Framework
-![ARP_Core](https://imgur.com/qKZ9Oj0.png)
+![ARP](https://imgur.com/qKZ9Oj0.png)
 
 # Discord : https://discord.gg/6xXwJyc
 

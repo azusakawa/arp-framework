@@ -636,7 +636,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'main'), nil, function()
         end, RMenu:Get('skinmenu', 'Other'))
         RageUI.Button("保存外觀", nil, {}, true, function(hovered, active, selected)
             if selected then
-                TriggerEvent('ARP_Core:SkinSave')
+                TriggerEvent('ARP:SkinSave')
                 RageUI.CloseAll()
                 DeleteSkinCam()
             end
@@ -688,7 +688,7 @@ Citizen.CreateThread(function()
 
             local PlyToShop = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), shop)
             if PlyToShop < 1.5 then
-                TriggerEvent('ARP_Core:DisplayText3D', '按 ~g~E~s~ 開啟選單')
+                ARP.DisplayText3D('按 ~g~E~s~ 開啟選單')
                 if IsControlJustReleased(0, 38) then
                     RageUI.Visible(RMenu:Get('skinmenu', 'main'), not RageUI.Visible(RMenu:Get('skinmenu', 'main')))
                     CreateSkinCam()
@@ -701,8 +701,8 @@ end)
 ------------------------------------------------------------
 -- 保存外觀
 ------------------------------------------------------------
-RegisterNetEvent('ARP_Core:SkinSave')
-AddEventHandler('ARP_Core:SkinSave', function()  
+RegisterNetEvent('ARP:SkinSave')
+AddEventHandler('ARP:SkinSave', function()  
     local playerskin = {}
     local skin = {
         SkinMenu.sex,
@@ -782,14 +782,14 @@ AddEventHandler('ARP_Core:SkinSave', function()
         table.insert(playerskin, skin[i])
     end  
 
-    TriggerServerEvent('ARP_Core:SavePlayerSkin', playerskin)
+    TriggerServerEvent('ARP:SavePlayerSkin', playerskin)
 end)
 
 ------------------------------------------------------------
 -- 外觀讀取/設置
 ------------------------------------------------------------
-RegisterNetEvent('ARP_Core:SetPlayerSkin')
-AddEventHandler('ARP_Core:SetPlayerSkin', function(pedskin)
+RegisterNetEvent('ARP:SetPlayerSkin')
+AddEventHandler('ARP:SetPlayerSkin', function(pedskin)
     Citizen.Wait(1000)
     if pedskin[1] == 1 then
         defaultModel = GetHashKey('mp_m_freemode_01')
