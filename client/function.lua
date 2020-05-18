@@ -49,6 +49,42 @@ ARP.LoadModel = function(model)
 end
 
 ------------------------------------------------------------
+-- 獲取附近玩家
+------------------------------------------------------------
+ARP.GetClosestPlayer = function()
+    local players = GetPlayers()
+    local Distance = -1
+    local Player = -1
+    local plyCoords = GetEntityCoords(GetPlayerPed(-1), 0)
+    
+    for _, ped in ipairs(players) do
+        local target = GetPlayerPed(ped)
+        if(target ~= GetPlayerPed(-1)) then
+            local othCoords = GetEntityCoords(GetPlayerPed(ped), 0)
+            local PlyToPly = Vdist(othCoords["x"], othCoords["y"], othCoords["z"], plyCoords["x"], plyCoords["y"], plyCoords["z"])
+            if(PlyToPly == -1 or Distance > PlyToPly) then
+                Player = ped
+                Distance = PlyToPly
+            end
+        end
+    end
+    
+    return Player, Distance
+end  
+  
+function GetPlayers()
+    local players = {}
+
+    for i = 0, 255 do
+        if NetworkIsPlayerActive(i) then
+            table.insert(players, i)
+        end
+    end
+
+    return players
+end
+
+------------------------------------------------------------
 -- 伺服器回傳
 ------------------------------------------------------------
 RegisterNetEvent('ARP:DisplayText3D')

@@ -5,7 +5,7 @@ RegisterServerEvent('ARP:GetVehicles')
 AddEventHandler('ARP:GetVehicles', function()
     local source = source
     MySQL.Async.fetchAll('SELECT * FROM arp_user_vehicles WHERE identifier = @identifier', {
-        ['@identifier'] = GetPlayerIdentifier(source),
+        ['@identifier'] = GetPlayerIdentifier(source)
     }, function(result)
         for k, v in ipairs(result) do
             local model = json.decode(v.model)

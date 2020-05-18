@@ -25,14 +25,6 @@ CREATE TABLE `arp_user_inventory` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `arp_vehicles` (
-	`model` VARCHAR(50) NOT NULL,
-	`label` VARCHAR(50) NOT NULL,
-	`price` INT(11) NOT NULL,
-
-	PRIMARY KEY (`model`)
-);
-
 CREATE TABLE `arp_user_vehicles` (
 	`identifier` VARCHAR(40) NOT NULL,
 	`position` VARCHAR(50) NULL,
@@ -41,4 +33,12 @@ CREATE TABLE `arp_user_vehicles` (
 	`statu` INT(11) NOT NULL DEFAULT 0,
 
 	PRIMARY KEY (`plate`)
+);
+
+CREATE TABLE `arp_vehicles` (
+	`model` VARCHAR(50) NOT NULL,
+	`label` VARCHAR(50) NOT NULL,
+	`price` INT(11) NOT NULL DEFAULT 0,
+
+	PRIMARY KEY (`model`)
 )

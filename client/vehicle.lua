@@ -59,7 +59,7 @@ end
 ------------------------------------------------------------
 -- 購買車輛
 ------------------------------------------------------------
-function BuyVehicle(model)
+function BuyVehicle(model, label)
     ARP.LoadModel(model)
     local vehmodel = {}
     local plate = SetPlateChar(3) .. SetPlateNum(3)
@@ -80,6 +80,7 @@ function BuyVehicle(model)
         table.insert(vehmodel, models[i])
     end
     
+    ARP.Notify('你~g~購買~s~了一輛' .. label .. '，車牌號碼: ' .. plate)
     TriggerServerEvent('ARP:SetVehicleToPlayer', GetVehicleNumberPlateText(PlayerVeh), vehmodel)
 end
 
@@ -109,7 +110,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('Vehmenu', 'main'), nil, function()
                         ARP.Notify('車輛~g~生成中~s~，請稍後')
                         ShowVehicle(v.model)
                     elseif index == 2 then
-                        BuyVehicle(v.model)
+                        BuyVehicle(v.model, v.label)
                         DeleteEntity(veh)
                         RageUI.CloseAll()
                     end

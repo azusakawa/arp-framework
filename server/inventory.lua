@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------
 -- 獲得物品
---------------------------------------------------------------------------------
+------------------------------------------------------------
 RegisterServerEvent('ARP:GetInventory')
 AddEventHandler('ARP:GetInventory', function(item)
     local source = source
@@ -32,9 +32,9 @@ AddEventHandler('ARP:GetInventory', function(item)
     end)
 end)
 
---------------------------------------------------------------------------------
+------------------------------------------------------------
 -- 給予物品
---------------------------------------------------------------------------------
+------------------------------------------------------------
 RegisterServerEvent('ARP:GiveInventory')
 AddEventHandler('ARP:GiveInventory', function(target, limit)
     local source = source
@@ -66,9 +66,9 @@ AddEventHandler('ARP:GiveInventory', function(target, limit)
     end) 
 end)
 
---------------------------------------------------------------------------------
+------------------------------------------------------------
 -- 丟棄物品
---------------------------------------------------------------------------------
+------------------------------------------------------------
 RegisterServerEvent('ARP:ThrowInventory')
 AddEventHandler('ARP:ThrowInventory', function(limit)
     local source = source
@@ -85,9 +85,9 @@ AddEventHandler('ARP:ThrowInventory', function(limit)
     end)
 end)
 
---------------------------------------------------------------------------------
+------------------------------------------------------------
 -- 取得玩家物品
---------------------------------------------------------------------------------
+------------------------------------------------------------
 RegisterServerEvent('ARP:LoadInventory')
 AddEventHandler('ARP:LoadInventory', function()
     local source = source

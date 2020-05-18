@@ -89,6 +89,15 @@ local garagepos = {
     },
 }
 
+local poundpos = {
+    Roy_Lowenstein_Blvd = {
+        Name = 'RoyLowensteinBlvd',
+        Marker = vector3(410.27, -1623.86, 28.29),
+        Spawn = vector3(410.95, -1636.71, 28.29),
+        Heading = 230.36
+    }
+}
+
 Citizen.CreateThread(function()
     for _, v in pairs(garagepos) do 
         local blip = AddBlipForCoord(v.Marker)
@@ -101,12 +110,24 @@ Citizen.CreateThread(function()
         AddTextComponentSubstringPlayerName('車庫')
         EndTextCommandSetBlipName(blip)
     end
+    for _, v in pairs(poundpos) do 
+        local blip = AddBlipForCoord(v.Marker)
+
+        SetBlipSprite (blip, 290)
+        SetBlipColour (blip, 17)
+        SetBlipAsShortRange(blip, true)
+
+        BeginTextCommandSetBlipName('STRING')
+        AddTextComponentSubstringPlayerName('扣押場')
+        EndTextCommandSetBlipName(blip)
+    end
 end)
 
 ------------------------------------------------------------
 -- 車輛選單
 ------------------------------------------------------------
 RMenu.Add('Garagemenu', 'main', RageUI.CreateMenu('車庫', '車庫選單'))
+RMenu.Add('Poundmenu', 'main', RageUI.CreateMenu('扣押場', '扣押場選單'))
 local GarageMenu = {
     action = {
         '駕駛'
@@ -115,6 +136,21 @@ local GarageMenu = {
 
 RageUI.CreateWhile(1.0, RMenu:Get('Garagemenu', 'main'), nil, function()
     RageUI.IsVisible(RMenu:Get('Garagemenu', 'main'), true, true, true, function()
+        for k, v in pairs(garage) do 
+            RageUI.List(v.plate, GarageMenu.action, 1, nil, {}, true, function(hovered, active, selected, index)
+                if selected then
+                    if index == 1 then
+                        DriveVehicle(v.plate, v.model, v.position, v.statu)
+                    end
+                end
+            end)
+        end
+    end, function()
+    end)
+end)
+
+RageUI.CreateWhile(1.0, RMenu:Get('Poundmenu', 'main'), nil, function()
+    RageUI.IsVisible(RMenu:Get('Poundmenu', 'main'), true, true, true, function()
         for k, v in pairs(garage) do 
             RageUI.List(v.plate, GarageMenu.action, 1, nil, {}, true, function(hovered, active, selected, index)
                 if selected then
@@ -147,6 +183,18 @@ Citizen.CreateThread(function()
                 ARP.DisplayText3D('按 ~INPUT_PICKUP~ 開啟車庫')
                 if IsControlJustReleased(0, 38) then
                     RageUI.Visible(RMenu:Get('Garagemenu', 'main'), not RageUI.Visible(RMenu:Get('Garagemenu', 'main')))
+                    TriggerServerEvent('ARP:GetVehicles')
+                end
+            end
+        end
+        for _, v in pairs(poundpos) do
+            DrawMarker(1, v.Marker, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5, 1.5, 1.0, 0, 0, 255, 150, false, true, 2, false, nil, nil, false)
+            DrawMarker(1, v.Spawn, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 3.0, 1.0, 0, 255, 0, 150, false, true, 2, false, nil, nil, false)
+            local PlyToSpawn = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), v.Marker)
+            if PlyToSpawn < 1.5 then
+                ARP.DisplayText3D('按 ~INPUT_PICKUP~ 開啟扣押場')
+                if IsControlJustReleased(0, 38) then
+                    RageUI.Visible(RMenu:Get('Poundmenu', 'main'), not RageUI.Visible(RMenu:Get('Poundmenu', 'main')))
                     TriggerServerEvent('ARP:GetVehicles')
                 end
             end
@@ -185,6 +233,18 @@ function DriveVehicle(plate, model, position, statu)
                 end
             else
                 ARP.Notify('你的車輛並不在~g~車庫~s~，請前往~r~扣押場')
+            end
+        end
+    end
+    for _, k in pairs(poundpos) do 
+        local PlyToPos = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), k.Marker)
+        if PlyToPos < 1.5 then
+            if statu == 1 then
+                SpawnVehicle(plate, model, k.Spawn, k.Heading)
+                TriggerServerEvent('ARP:SetVehicleTakeOut', plate)
+                RageUI.CloseAll()
+            else
+                ARP.Notify('你的車輛並不在~g~扣押場~s~，請前往~r~車庫')
             end
         end
     end
