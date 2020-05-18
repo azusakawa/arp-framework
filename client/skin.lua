@@ -648,8 +648,8 @@ end)
 ------------------------------------------------------------
 -- 服飾店
 ------------------------------------------------------------
-local ARP = {}
-ARP.ClothingShops = {
+local ARP_Core = {}
+ARP_Core.ClothingShops = {
     vector3(72.3, -1399.1, 28.4),
 	vector3(-703.8, -152.3, 36.4),
 	vector3(-167.9, -299.0, 38.7),
@@ -667,7 +667,7 @@ ARP.ClothingShops = {
 }
 
 Citizen.CreateThread(function()
-    for _, shop in ipairs(ARP.ClothingShops) do 
+    for _, shop in ipairs(ARP_Core.ClothingShops) do 
         local blip = AddBlipForCoord(shop)
 
         SetBlipSprite (blip, 73)
@@ -683,12 +683,12 @@ end)
 Citizen.CreateThread(function()
     while true do 
         Citizen.Wait(0)
-        for _, shop in ipairs(ARP.ClothingShops) do 
+        for _, shop in ipairs(ARP_Core.ClothingShops) do 
             DrawMarker(1, shop, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5, 1.5, 1.0, 165, 42, 42, 150, false, true, 2, false, nil, nil, false)
 
             local PlyToShop = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), shop)
             if PlyToShop < 1.5 then
-                ARP.DisplayText3D('按 ~g~E~s~ 開啟選單')
+                ARP.DisplayText3D('按 ~INPUT_PICKUP~ 開啟選單')
                 if IsControlJustReleased(0, 38) then
                     RageUI.Visible(RMenu:Get('skinmenu', 'main'), not RageUI.Visible(RMenu:Get('skinmenu', 'main')))
                     CreateSkinCam()
