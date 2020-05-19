@@ -37,3 +37,26 @@ AddEventHandler('ARP:StoreVehicle', function(plate, position)
         end
     end)
 end)
+
+------------------------------------------------------------
+-- 丟棄車輛
+------------------------------------------------------------
+AddEventHandler('playerDropped', function (reason)
+    local source = source
+    local pound = {
+        'RoyLowensteinBlvd',
+    }
+    MySQL.Async.fetchAll('SELECT * FROM arp_user_vehicles WHERE identifier = @identifier', {
+        ['@identifier'] = GetPlayerIdentifier(source)
+    }, function(result)
+        for k, v in pairs(pound) do 
+            for i = 1, #result do 
+                if result[i].position == v and result[i].statu == 0 then
+                    MySQL.Async.execute('UPDATE arp_user_vehicles SET statu = @statu', {
+                        ['@statu'] = 1
+                    })
+                end
+            end
+        end
+    end)
+end)
