@@ -5,7 +5,8 @@
 
 ## EN
 # 🔐Requirement
-- mysql-async https://github.com/brouznouf/fivem-mysql-async
+- ghmattimysql https://github.com/GHMatti/ghmattimysql
+- mysql-async https://github.com/brouznouf/fivem-mysql-async (remove and replace)
 - RageUI https://github.com/iTexZoz/RageUI
 
 # 🖊How to use it
@@ -18,7 +19,8 @@ start arp-framework
 
 ## zh-TW
 # 🔐需求
-- mysql-async https://github.com/brouznouf/fivem-mysql-async
+- ghmattimysql https://github.com/GHMatti/ghmattimysql
+- mysql-async https://github.com/brouznouf/fivem-mysql-async (移除且替換)
 - RageUI https://github.com/iTexZoz/RageUI
 
 # 🖊如何使用
