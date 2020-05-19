@@ -648,8 +648,7 @@ end)
 ------------------------------------------------------------
 -- 服飾店
 ------------------------------------------------------------
-local ARP_Core = {}
-ARP_Core.ClothingShops = {
+local ClothingShops = {
     vector3(72.3, -1399.1, 28.4),
 	vector3(-703.8, -152.3, 36.4),
 	vector3(-167.9, -299.0, 38.7),
@@ -667,7 +666,7 @@ ARP_Core.ClothingShops = {
 }
 
 Citizen.CreateThread(function()
-    for _, shop in ipairs(ARP_Core.ClothingShops) do 
+    for _, shop in ipairs(ClothingShops) do 
         local blip = AddBlipForCoord(shop)
 
         SetBlipSprite (blip, 73)
@@ -683,7 +682,7 @@ end)
 Citizen.CreateThread(function()
     while true do 
         Citizen.Wait(0)
-        for _, shop in ipairs(ARP_Core.ClothingShops) do 
+        for _, shop in ipairs(ClothingShops) do 
             DrawMarker(1, shop, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5, 1.5, 1.0, 165, 42, 42, 150, false, true, 2, false, nil, nil, false)
 
             local PlyToShop = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), shop)
