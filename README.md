@@ -6,28 +6,32 @@
 ## EN
 # 🔐Requirement
 - ghmattimysql https://github.com/GHMatti/ghmattimysql
-- mysql-async https://github.com/brouznouf/fivem-mysql-async (remove and replace)
+- mysql-async https://github.com/brouznouf/fivem-mysql-async
+- arp-framework-sql https://github.com/azusakawa/arp-framework-sql
 - RageUI https://github.com/iTexZoz/RageUI
+- bob74_ipl https://github.com/Bob74/bob74_ipl
 
 # 🖊How to use it
-- download `mysql-async` and `arp-framework`
+- download `arp-framework-sql` and `arp-framework`
 - open `server.cfg` and install like this
 ```
-start mysql-async
+start ghmattimysql
 start arp-framework
 ```
 
 ## zh-TW
 # 🔐需求
 - ghmattimysql https://github.com/GHMatti/ghmattimysql
-- mysql-async https://github.com/brouznouf/fivem-mysql-async (移除且替換)
+- mysql-async https://github.com/brouznouf/fivem-mysql-async
+- arp-framework-sql https://github.com/azusakawa/arp-framework-sql
 - RageUI https://github.com/iTexZoz/RageUI
+- bob74_ipl https://github.com/Bob74/bob74_ipl
 
 # 🖊如何使用
-- 下載 `mysql-async` 和 `arp-framework`
+- 下載 `arp-framework-sql` 和 `arp-framework`
 - 打開 `server.cfg` 並安裝，看起來像這樣
 ```
-start mysql-async
+start ghmattimysql
 start arp-framework
 ```
 
