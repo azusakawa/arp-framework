@@ -75,3 +75,14 @@ AddEventHandler('ARP_Core:SpawnPlayer', function()
         end
     end)
 end)
+
+------------------------------------------------------------
+-- 版本確認
+------------------------------------------------------------
+PerformHttpRequest('https://raw.githubusercontent.com/azusakawa/arp-framework/master/fxmanifest.lua', function (errorCode, result, headers)
+    local version = GetResourceMetadata(GetCurrentResourceName(), 'resource_version', 0)
+
+    if string.find(tostring(result), version) == nil then
+        print('\n\r[arp-framework]' .. version .. '\n\r')
+    end
+end)
