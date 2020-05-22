@@ -83,6 +83,10 @@ PerformHttpRequest('https://raw.githubusercontent.com/azusakawa/arp-framework/ma
     local version = GetResourceMetadata(GetCurrentResourceName(), 'resource_version', 0)
 
     if string.find(tostring(result), version) == nil then
-        print('\n\r[arp-framework]' .. version .. '\n\r')
+        print('\n[arp-framework] 當前版本過舊請更新版本')
+        print('[Discord] https://discord.gg/6xXwJyc\n')
+    else
+        print('\n[arp-framework] 最新版本！！！')
+        print('[Discord] https://discord.gg/6xXwJyc\n')
     end
-end)
+end, 'GET', '', '')
