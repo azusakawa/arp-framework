@@ -2,7 +2,7 @@
 -- 接收玩家登入資訊
 ------------------------------------------------------------
 AddEventHandler('playerSpawned', function()     
-    TriggerServerEvent('ARP:SpawnPlayer')
+    TriggerServerEvent('ARP_Core:SpawnPlayer')
 end)
 
 ------------------------------------------------------------
@@ -12,12 +12,12 @@ Citizen.CreateThread(function()
     while true do 
         Citizen.Wait(10000)
         LastPosX, LastPosY, LastPosZ = table.unpack(GetEntityCoords(GetPlayerPed(-1), true)) 
-        TriggerServerEvent('ARP:UpdatePosition', LastPosX, LastPosY, LastPosZ)
+        TriggerServerEvent('ARP_Core:UpdatePosition', LastPosX, LastPosY, LastPosZ)
     end
 end)
 
-RegisterNetEvent('ARP:lastPosition')
-AddEventHandler('ARP:lastPosition', function(PosX, PosY, PosZ, bool)  
+RegisterNetEvent('ARP_Core:lastPosition')
+AddEventHandler('ARP_Core:lastPosition', function(PosX, PosY, PosZ, bool)  
     Citizen.Wait(1000)
 
     if not bool then 
@@ -30,9 +30,9 @@ AddEventHandler('ARP:lastPosition', function(PosX, PosY, PosZ, bool)
         SetPedDefaultComponentVariation(PlayerPedId())
         SetModelAsNoLongerNeeded(defaultModel) 
     else
-        TriggerServerEvent('ARP:LoadSkin')
+        TriggerServerEvent('ARP_Core:LoadSkin')
     end
     
-    TriggerServerEvent('ARP:CheckIsDead')
+    TriggerServerEvent('ARP_Core:CheckIsDead')
     SetEntityCoords(GetPlayerPed(-1), PosX, PosY, PosZ, 1, 0, 0, 1)
 end)

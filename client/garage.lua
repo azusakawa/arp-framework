@@ -3,8 +3,8 @@
 ------------------------------------------------------------
 local garage = {}
 
-RegisterNetEvent('ARP:GarageMenu')
-AddEventHandler('ARP:GarageMenu', function(plate, model, position, statu)
+RegisterNetEvent('ARP_Core:GarageMenu')
+AddEventHandler('ARP_Core:GarageMenu', function(plate, model, position, statu)
     for i = 1, #garage do 
         table.remove(garage, i)
     end
@@ -176,14 +176,16 @@ Citizen.CreateThread(function()
             if PlyToDelete < 3.0 then
                 ARP.DisplayText3D('按 ~INPUT_PICKUP~ 儲存車輛')
                 if IsControlJustReleased(0, 38) then
-                    CheckVehicle(v.Name)
+                    if IsPedInVehicle(PlayerPedId(), GetVehiclePedIsIn(PlayerPedId(), false), true) then
+                        CheckVehicle(v.Name)
+                    end
                 end
             end
             if PlyToSpawn < 1.5 then
                 ARP.DisplayText3D('按 ~INPUT_PICKUP~ 開啟車庫')
                 if IsControlJustReleased(0, 38) then
                     RageUI.Visible(RMenu:Get('Garagemenu', 'main'), not RageUI.Visible(RMenu:Get('Garagemenu', 'main')))
-                    TriggerServerEvent('ARP:GetVehicles')
+                    TriggerServerEvent('ARP_Core:GetVehicles')
                 end
             end
         end
@@ -195,7 +197,7 @@ Citizen.CreateThread(function()
                 ARP.DisplayText3D('按 ~INPUT_PICKUP~ 開啟扣押場')
                 if IsControlJustReleased(0, 38) then
                     RageUI.Visible(RMenu:Get('Poundmenu', 'main'), not RageUI.Visible(RMenu:Get('Poundmenu', 'main')))
-                    TriggerServerEvent('ARP:GetVehicles')
+                    TriggerServerEvent('ARP_Core:GetVehicles')
                 end
             end
         end
@@ -208,11 +210,11 @@ end)
 function CheckVehicle(position)
     local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
     local plate = GetVehicleNumberPlateText(vehicle)
-    TriggerServerEvent('ARP:StoreVehicle', plate, position)
+    TriggerServerEvent('ARP_Core:StoreVehicle', plate, position)
 end
 
-RegisterNetEvent('ARP:DeleteStoreVehicle')
-AddEventHandler('ARP:DeleteStoreVehicle', function()
+RegisterNetEvent('ARP_Core:DeleteStoreVehicle')
+AddEventHandler('ARP_Core:DeleteStoreVehicle', function()
     local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
     DeleteEntity(vehicle)
 end)
@@ -241,7 +243,7 @@ function DriveVehicle(plate, model, position, statu)
         if PlyToPos < 1.5 then
             if statu == 1 then
                 SpawnVehicle(plate, model, k.Spawn, k.Heading)
-                TriggerServerEvent('ARP:SetVehicleTakeOut', plate)
+                TriggerServerEvent('ARP_Core:SetVehicleTakeOut', plate)
                 RageUI.CloseAll()
             else
                 ARP.Notify('你的車輛並不在~g~扣押場~s~，請前往~r~車庫')

@@ -1,15 +1,15 @@
 ------------------------------------------------------------
 -- 獲得車輛
 ------------------------------------------------------------
-RegisterServerEvent('ARP:GetVehicles')
-AddEventHandler('ARP:GetVehicles', function()
+RegisterServerEvent('ARP_Core:GetVehicles')
+AddEventHandler('ARP_Core:GetVehicles', function()
     local source = source
-    MySQL.Async.fetchAll('SELECT * FROM arp_user_vehicles WHERE identifier = @identifier', {
+    exports.ghmattimysql:execute('SELECT * FROM arp_user_vehicles WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source)
     }, function(result)
-        for k, v in ipairs(result) do
-            local model = json.decode(v.model)
-            TriggerClientEvent('ARP:GarageMenu', source, v.plate, model[2], v.position, v.statu)
+        for i = 1, #result do 
+            local model = json.decode(result[i].model)
+            TriggerClientEvent('ARP_Core:GarageMenu', source, result[i].plate, model[2], result[i].position, result[i].statu)
         end
     end)
 end)
@@ -17,22 +17,22 @@ end)
 ------------------------------------------------------------
 -- 儲存車輛
 ------------------------------------------------------------
-RegisterServerEvent('ARP:StoreVehicle')
-AddEventHandler('ARP:StoreVehicle', function(plate, position)
+RegisterServerEvent('ARP_Core:StoreVehicle')
+AddEventHandler('ARP_Core:StoreVehicle', function(plate, position)
     local source = source
-    MySQL.Async.fetchAll('SELECT * FROM arp_user_vehicles WHERE identifier = @identifier', {
+    exports.ghmattimysql:execute('SELECT * FROM arp_user_vehicles WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source)
     }, function(result)
         for i = 1, #result do
             if result[i].plate == plate then
-                MySQL.Async.execute('UPDATE arp_user_vehicles SET position = @position WHERE plate = @plate', {
+                exports.ghmattimysql:execute('UPDATE arp_user_vehicles SET position = @position WHERE plate = @plate', {
                     ['@plate'] = plate,
                     ['@position'] = position 
                 })
-                TriggerClientEvent('ARP:Notify', source, '車輛已~g~安全~s~放入車庫')
-                TriggerClientEvent('ARP:DeleteStoreVehicle', source)
+                TriggerClientEvent('ARP_Core:Notify', source, '車輛已~g~安全~s~放入車庫')
+                TriggerClientEvent('ARP_Core:DeleteStoreVehicle', source)
             elseif result[i].plate ~= plate then
-                TriggerClientEvent('ARP:Notify', source, '你並~r~未擁有~s~這輛車')
+                TriggerClientEvent('ARP_Core:Notify', source, '你並~r~未擁有~s~這輛車')
             end
         end
     end)
@@ -46,16 +46,14 @@ AddEventHandler('playerDropped', function (reason)
     local pound = {
         'RoyLowensteinBlvd',
     }
-    MySQL.Async.fetchAll('SELECT * FROM arp_user_vehicles WHERE identifier = @identifier', {
+    exports.ghmattimysql:execute('SELECT * FROM arp_user_vehicles WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source)
     }, function(result)
         for k, v in pairs(pound) do 
-            for i = 1, #result do 
-                if result[i].position == v and result[i].statu == 0 then
-                    MySQL.Async.execute('UPDATE arp_user_vehicles SET statu = @statu', {
-                        ['@statu'] = 1
-                    })
-                end
+            if result[1].position == v and result[1].statu == 0 then
+                exports.ghmattimysql:execute('UPDATE arp_user_vehicles SET statu = @statu', {
+                    ['@statu'] = 1
+                })
             end
         end
     end)

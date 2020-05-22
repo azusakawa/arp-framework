@@ -38,14 +38,13 @@ function PlayerJoin(playerId)
     end
 
     if identifier then
-        MySQL.Async.fetchScalar('SELECT 1 FROM arp_users WHERE identifier = @identifier', {
+        exports.ghmattimysql:scalar('SELECT 1 FROM arp_users WHERE identifier = @identifier', {
             ['@identifier'] = identifier
         }, function(result)
-            if result then
-            else
-                MySQL.Async.execute('INSERT INTO arp_users (identifier) VALUES (@identifier)', {
+            if not result then
+                exports.ghmattimysql:execute('INSERT INTO arp_users (identifier) VALUES (@identifier)', {
                     ['@identifier'] = identifier
-                })
+                })               
             end
         end)
     end
@@ -54,27 +53,25 @@ end
 ------------------------------------------------------------
 -- 紀錄玩家位置/生成
 ------------------------------------------------------------
-RegisterServerEvent('ARP:UpdatePosition')
-AddEventHandler('ARP:UpdatePosition', function(PosX, PosY, PosZ)
-    MySQL.Async.execute('UPDATE arp_users SET position = @position WHERE identifier = @identifier', {
+RegisterServerEvent('ARP_Core:UpdatePosition')
+AddEventHandler('ARP_Core:UpdatePosition', function(PosX, PosY, PosZ)
+    exports.ghmattimysql:execute('UPDATE arp_users SET position = @position WHERE identifier = @identifier', {
         ['@identifier'] = GetPlayerIdentifier(source),
         ['@position'] = '{' .. PosX .. ', ' .. PosY .. ', ' .. PosZ .. '}',
     })
 end)
 
-RegisterServerEvent('ARP:SpawnPlayer')
-AddEventHandler('ARP:SpawnPlayer', function()
+RegisterServerEvent('ARP_Core:SpawnPlayer')
+AddEventHandler('ARP_Core:SpawnPlayer', function()
     local source = source
-    MySQL.Async.fetchAll('SELECT * FROM arp_users WHERE identifier = @identifier', {
-        ['@identifier'] = GetPlayerIdentifier(source),
+    exports.ghmattimysql:execute('SELECT * FROM arp_users WHERE identifier = @identifier', {
+        ['@identifier'] = GetPlayerIdentifier(source)
     }, function(result)
-        for k, v in ipairs(result) do 
-            if v.skin ~= nil then
-                local Spawnpos = json.decode(v.position)
-                TriggerClientEvent('ARP:lastPosition', source, Spawnpos[1], Spawnpos[2], Spawnpos[3], true)
-            else
-                TriggerClientEvent('ARP:lastPosition', source, -269.4, -955.3, 31.2, false)
-            end
+        if result[1].skin ~= nil then
+            local Spawnpos = json.decode(result[1].position)
+            TriggerClientEvent('ARP_Core:lastPosition', source, Spawnpos[1], Spawnpos[2], Spawnpos[3], true)
+        else
+            TriggerClientEvent('ARP_Core:lastPosition', source, -269.4, -955.3, 31.2, false)
         end
     end)
 end)

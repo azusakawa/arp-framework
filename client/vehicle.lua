@@ -3,8 +3,8 @@
 ------------------------------------------------------------
 local vehicles = {}
 
-RegisterNetEvent('ARP:VehicleMenu')
-AddEventHandler('ARP:VehicleMenu', function(model, label, price)
+RegisterNetEvent('ARP_Core:VehicleMenu')
+AddEventHandler('ARP_Core:VehicleMenu', function(model, label, price)
     for i = 1, #vehicles do 
         table.remove(vehicles, i)
     end
@@ -81,7 +81,7 @@ function BuyVehicle(model, label)
     end
     
     ARP.Notify('你~g~購買~s~了一輛' .. label .. '，車牌號碼: ' .. plate)
-    TriggerServerEvent('ARP:SetVehicleToPlayer', GetVehicleNumberPlateText(PlayerVeh), vehmodel)
+    TriggerServerEvent('ARP_Core:SetVehicleToPlayer', GetVehicleNumberPlateText(PlayerVeh), vehmodel)
 end
 
 ------------------------------------------------------------
@@ -147,7 +147,7 @@ Citizen.CreateThread(function()
             ARP.DisplayText3D('按 ~g~E~s~ 開啟選單')
             if IsControlJustReleased(0, 38) then
                 RageUI.Visible(RMenu:Get('Vehmenu', 'main'), not RageUI.Visible(RMenu:Get('Vehmenu', 'main')))
-                TriggerServerEvent('ARP:LoadVehicles')
+                TriggerServerEvent('ARP_Core:LoadVehicles')
             end
         end
     end

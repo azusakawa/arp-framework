@@ -1,4 +1,4 @@
-local ARP = {}
+ARP = {}
 
 ------------------------------------------------------------
 -- 3D 右上文字
@@ -87,17 +87,17 @@ end
 ------------------------------------------------------------
 -- 伺服器回傳
 ------------------------------------------------------------
-RegisterNetEvent('ARP:DisplayText3D')
-AddEventHandler('ARP:DisplayText3D', function(text)  
+RegisterNetEvent('ARP_Core:DisplayText3D')
+AddEventHandler('ARP_Core:DisplayText3D', function(text)  
     ARP.DisplayText3D(text)
 end)
 
-RegisterNetEvent('ARP:Draw3DTxt')
-AddEventHandler('ARP:Draw3DTxt', function(x, y, z, r, g, b, text)  
+RegisterNetEvent('ARP_Core:Draw3DTxt')
+AddEventHandler('ARP_Core:Draw3DTxt', function(x, y, z, r, g, b, text)  
     ARP.Draw3DTxt(x, y, z, r, g, b, text)
 end)
 
-RegisterNetEvent('ARP:Notify')
-AddEventHandler('ARP:Notify', function(text)  
+RegisterNetEvent('ARP_Core:Notify')
+AddEventHandler('ARP_Core:Notify', function(text)  
     ARP.Notify(text)
 end)

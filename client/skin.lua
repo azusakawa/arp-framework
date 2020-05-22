@@ -119,7 +119,7 @@ function LoadPedModel(bool)
 end
 
 
-local ped = PlayerPedId()
+local PlayerPed = PlayerPedId()
 ------------------------------------------------------------
 -- 膚色 & 性別
 ------------------------------------------------------------
@@ -137,7 +137,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'Skin'), nil, function()
         end)
         RageUI.Progress('膚色', SkinMenu.skin, 45, nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadBlendData(ped, SkinMenu.face, SkinMenu.face, SkinMenu.face, SkinMenu.skin, SkinMenu.skin, SkinMenu.skin, 1.0, 1.0, 1.0, true)
+                SetPedHeadBlendData(PlayerPed, SkinMenu.face, SkinMenu.face, SkinMenu.face, SkinMenu.skin, SkinMenu.skin, SkinMenu.skin, 1.0, 1.0, 1.0, true)
             end
             SkinMenu.skin = index
         end)
@@ -152,218 +152,218 @@ RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'Face'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'Face'), true, true, true, function()
         RageUI.Progress('臉型', SkinMenu.face, 45, nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadBlendData(ped, SkinMenu.face, SkinMenu.face, SkinMenu.face, SkinMenu.skin, SkinMenu.skin, SkinMenu.skin, 1.0, 1.0, 1.0, true)
+                SetPedHeadBlendData(PlayerPed, SkinMenu.face, SkinMenu.face, SkinMenu.face, SkinMenu.skin, SkinMenu.skin, SkinMenu.skin, 1.0, 1.0, 1.0, true)
             end
             SkinMenu.face = index
         end)
         RageUI.Progress('眼睛顏色', SkinMenu.eyecolor, 31, nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedEyeColor(ped, SkinMenu.eyecolor, 0, 1)
+                SetPedEyeColor(PlayerPed, SkinMenu.eyecolor, 0, 1)
             end
             SkinMenu.eyecolor = index
         end)
         RageUI.Progress('斑點', SkinMenu.blemishes, (GetNumHeadOverlayValues(0)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 0, SkinMenu.blemishes, (SkinMenu.blemishessize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 0, SkinMenu.blemishes, (SkinMenu.blemishessize/10) + 0.0)
             end
             SkinMenu.blemishes = index
         end)
         RageUI.Progress('斑點樣式', SkinMenu.blemishessize, 10, nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 0, SkinMenu.blemishes, (SkinMenu.blemishessize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 0, SkinMenu.blemishes, (SkinMenu.blemishessize/10) + 0.0)
             end
             SkinMenu.blemishessize = index
         end)
         RageUI.Progress('鬍鬚', SkinMenu.beard, (GetNumHeadOverlayValues(1)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 1, SkinMenu.beard, (SkinMenu.beardsize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 1, SkinMenu.beard, (SkinMenu.beardsize/10) + 0.0)
             end
             SkinMenu.beard = index
         end)
         RageUI.Progress('鬍鬚樣式', SkinMenu.beardsize, 10, nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 1, SkinMenu.beard, (SkinMenu.beardsize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 1, SkinMenu.beard, (SkinMenu.beardsize/10) + 0.0)
             end
             SkinMenu.beardsize = index
         end)
         RageUI.Progress('鬍鬚顏色', SkinMenu.beardcolor, (GetNumHairColors()-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlayColor(ped, 1, 1, SkinMenu.beardcolor, SkinMenu.beardcolor2)
+                SetPedHeadOverlayColor(PlayerPed, 1, 1, SkinMenu.beardcolor, SkinMenu.beardcolor2)
             end
             SkinMenu.beardcolor = index
         end)
         RageUI.Progress('鬍鬚顏色2', SkinMenu.beardcolor2, (GetNumHairColors()-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlayColor(ped, 1, 1, SkinMenu.beardcolor, SkinMenu.beardcolor2)
+                SetPedHeadOverlayColor(PlayerPed, 1, 1, SkinMenu.beardcolor, SkinMenu.beardcolor2)
             end
             SkinMenu.beardcolor2 = index
         end)
         RageUI.Progress('眉毛', SkinMenu.eyebrows, (GetNumHeadOverlayValues(2)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 2, SkinMenu.eyebrows, (SkinMenu.eyebrowssize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 2, SkinMenu.eyebrows, (SkinMenu.eyebrowssize/10) + 0.0)
             end
             SkinMenu.eyebrows = index
         end)
         RageUI.Progress('眉毛樣式', SkinMenu.eyebrowssize, (GetNumHeadOverlayValues(2)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 2, SkinMenu.eyebrows, (SkinMenu.eyebrowssize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 2, SkinMenu.eyebrows, (SkinMenu.eyebrowssize/10) + 0.0)
             end
             SkinMenu.eyebrowssize = index
         end)
         RageUI.Progress('眉毛顏色', SkinMenu.eyebrowscolor, (GetNumHairColors()-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlayColor(ped, 2, 1, SkinMenu.eyebrowscolor, SkinMenu.eyebrowscolor2)
+                SetPedHeadOverlayColor(PlayerPed, 2, 1, SkinMenu.eyebrowscolor, SkinMenu.eyebrowscolor2)
             end
             SkinMenu.eyebrowscolor = index
         end)
         RageUI.Progress('眉毛顏色2', SkinMenu.eyebrowscolor2, (GetNumHairColors()-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlayColor(ped, 2, 1, SkinMenu.eyebrowscolor, SkinMenu.eyebrowscolor2)
+                SetPedHeadOverlayColor(PlayerPed, 2, 1, SkinMenu.eyebrowscolor, SkinMenu.eyebrowscolor2)
             end
             SkinMenu.eyebrowscolor2 = index
         end)
         RageUI.Progress('皺紋', SkinMenu.age, (GetNumHeadOverlayValues(3)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 3, SkinMenu.age, (SkinMenu.age2/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 3, SkinMenu.age, (SkinMenu.age2/10) + 0.0)
             end
             SkinMenu.age = index
         end)
         RageUI.Progress('皺紋樣式', SkinMenu.age2, 10, nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 3, SkinMenu.age, (SkinMenu.age2/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 3, SkinMenu.age, (SkinMenu.age2/10) + 0.0)
             end
             SkinMenu.age2 = index
         end)
         RageUI.Progress('裝容', SkinMenu.makeup, (GetNumHeadOverlayValues(4)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 4, SkinMenu.makeup, (SkinMenu.makeupsize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 4, SkinMenu.makeup, (SkinMenu.makeupsize/10) + 0.0)
             end
             SkinMenu.makeup = index
         end)
         RageUI.Progress('裝容樣式', SkinMenu.makeupsize, 10, nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 4, SkinMenu.makeup, (SkinMenu.makeupsize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 4, SkinMenu.makeup, (SkinMenu.makeupsize/10) + 0.0)
             end
             SkinMenu.makeupsize = index
         end)
         RageUI.Progress('裝容顏色', SkinMenu.makeupcolor, (GetNumHairColors()-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlayColor(ped, 4, 1, SkinMenu.makeupcolor, SkinMenu.makeupcolor2)
+                SetPedHeadOverlayColor(PlayerPed, 4, 1, SkinMenu.makeupcolor, SkinMenu.makeupcolor2)
             end
             SkinMenu.makeupcolor = index
         end)
         RageUI.Progress('裝容顏色2', SkinMenu.makeupcolor2, (GetNumHairColors()-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlayColor(ped, 4, 1, SkinMenu.makeupcolor, SkinMenu.makeupcolor2)
+                SetPedHeadOverlayColor(PlayerPed, 4, 1, SkinMenu.makeupcolor, SkinMenu.makeupcolor2)
             end
             SkinMenu.makeupcolor2 = index
         end)
         RageUI.Progress('腮紅', SkinMenu.blus, (GetNumHeadOverlayValues(5)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 5, SkinMenu.blus, (SkinMenu.blussize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 5, SkinMenu.blus, (SkinMenu.blussize/10) + 0.0)
             end
             SkinMenu.blus = index
         end)
         RageUI.Progress('腮紅樣式', SkinMenu.blussize, 10, nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 5, SkinMenu.blus, (SkinMenu.blussize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 5, SkinMenu.blus, (SkinMenu.blussize/10) + 0.0)
             end
             SkinMenu.blussize = index
         end)
         RageUI.Progress('腮紅顏色2', SkinMenu.bluscolor, (GetNumHairColors()-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlayColor(ped, 5, 2, SkinMenu.bluscolor)
+                SetPedHeadOverlayColor(PlayerPed, 5, 2, SkinMenu.bluscolor)
             end
             SkinMenu.bluscolor = index
         end)
         RageUI.Progress('氣色', SkinMenu.complexion, (GetNumHeadOverlayValues(6)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 6, SkinMenu.complexion, (SkinMenu.complexionsize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 6, SkinMenu.complexion, (SkinMenu.complexionsize/10) + 0.0)
             end
             SkinMenu.complexion = index
         end)
         RageUI.Progress('氣色樣式', SkinMenu.complexionsize, 10, nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 6, SkinMenu.complexion, (SkinMenu.complexionsize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 6, SkinMenu.complexion, (SkinMenu.complexionsize/10) + 0.0)
             end
             SkinMenu.complexionsize = index
         end)
         RageUI.Progress('曬痕', SkinMenu.sun, (GetNumHeadOverlayValues(7)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 7, SkinMenu.sun, (SkinMenu.sunsize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 7, SkinMenu.sun, (SkinMenu.sunsize/10) + 0.0)
             end
             SkinMenu.sun = index
         end)
         RageUI.Progress('曬痕樣式', SkinMenu.sunsize, 10, nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 7, SkinMenu.sun, (SkinMenu.sunsize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 7, SkinMenu.sun, (SkinMenu.sunsize/10) + 0.0)
             end
             SkinMenu.sunsize = index
         end)
         RageUI.Progress('口紅', SkinMenu.lipstick, (GetNumHeadOverlayValues(8)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 8, SkinMenu.lipstick, (SkinMenu.lipsticksize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 8, SkinMenu.lipstick, (SkinMenu.lipsticksize/10) + 0.0)
             end
             SkinMenu.lipstick = index
         end)
         RageUI.Progress('口紅樣式', SkinMenu.lipsticksize, 10, nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 8, SkinMenu.lipstick, (SkinMenu.lipsticksize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 8, SkinMenu.lipstick, (SkinMenu.lipsticksize/10) + 0.0)
             end
             SkinMenu.lipsticksize = index
         end)
         RageUI.Progress('口紅顏色', SkinMenu.lipstickcolor, (GetNumHairColors()-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlayColor(ped, 8, 1, SkinMenu.lipstickcolor, SkinMenu.lipstickcolor2)
+                SetPedHeadOverlayColor(PlayerPed, 8, 1, SkinMenu.lipstickcolor, SkinMenu.lipstickcolor2)
             end
             SkinMenu.lipstickcolor = index
         end)
         RageUI.Progress('口紅顏色2', SkinMenu.lipstickcolor2, (GetNumHairColors()-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlayColor(ped, 8, 1, SkinMenu.lipstickcolor, SkinMenu.lipstickcolor2)
+                SetPedHeadOverlayColor(PlayerPed, 8, 1, SkinMenu.lipstickcolor, SkinMenu.lipstickcolor2)
             end
             SkinMenu.lipstickcolor2 = index
         end)       
         RageUI.Progress('痣', SkinMenu.moles, (GetNumHeadOverlayValues(9)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 9, SkinMenu.moles, (SkinMenu.molessize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 9, SkinMenu.moles, (SkinMenu.molessize/10) + 0.0)
             end
             SkinMenu.moles = index
         end)
         RageUI.Progress('痣樣式', SkinMenu.molessize, 10, nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 9, SkinMenu.moles, (SkinMenu.molessize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 9, SkinMenu.moles, (SkinMenu.molessize/10) + 0.0)
             end
             SkinMenu.molessize = index
         end)
         RageUI.Progress('胸毛', SkinMenu.chest, (GetNumHeadOverlayValues(10)-1), nil, true, true, function(hovered, active, selected, index)
             CreateSkinCam(0.4)
             if active then
-                SetPedHeadOverlay(ped, 10, SkinMenu.chest, (SkinMenu.chestsize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 10, SkinMenu.chest, (SkinMenu.chestsize/10) + 0.0)
             end
             SkinMenu.chest = index
         end)
         RageUI.Progress('胸毛樣式', SkinMenu.chestsize, 10, nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 10, SkinMenu.chest, (SkinMenu.chestsize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 10, SkinMenu.chest, (SkinMenu.chestsize/10) + 0.0)
             end
             SkinMenu.chestsize = index
         end)
         RageUI.Progress('胸毛顏色', SkinMenu.chestcolor, (GetNumHairColors()-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlayColor(ped, 10, 1, SkinMenu.chestcolor)
+                SetPedHeadOverlayColor(PlayerPed, 10, 1, SkinMenu.chestcolor)
             end
             SkinMenu.chestcolor = index
         end)
         RageUI.Progress('身軀斑點', SkinMenu.bodyb, (GetNumHeadOverlayValues(11)-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 11, SkinMenu.bodyb, (SkinMenu.bodybsize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 11, SkinMenu.bodyb, (SkinMenu.bodybsize/10) + 0.0)
             end
             SkinMenu.bodyb = index
         end)
         RageUI.Progress('身軀斑點樣式', SkinMenu.bodybsize, 10, nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHeadOverlay(ped, 11, SkinMenu.bodyb, (SkinMenu.bodybsize/10) + 0.0)
+                SetPedHeadOverlay(PlayerPed, 11, SkinMenu.bodyb, (SkinMenu.bodybsize/10) + 0.0)
             end
             SkinMenu.bodybsize = index
         end)
@@ -376,147 +376,147 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'Body'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'Body'), true, true, true, function()
-        RageUI.Progress('面具', SkinMenu.mask, (GetNumberOfPedDrawableVariations(ped, 1) - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('面具', SkinMenu.mask, (GetNumberOfPedDrawableVariations(PlayerPed, 1) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 1, SkinMenu.mask, SkinMenu.masksize, 2)
+                SetPedComponentVariation(PlayerPed, 1, SkinMenu.mask, SkinMenu.masksize, 2)
             end
             SkinMenu.mask = index
         end)
-        RageUI.Progress('面具樣式', SkinMenu.masksize, (GetNumberOfPedTextureVariations(ped, 1, SkinMenu.mask)), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('面具樣式', SkinMenu.masksize, (GetNumberOfPedTextureVariations(PlayerPed, 1, SkinMenu.mask)), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 1, SkinMenu.mask, SkinMenu.masksize, 2)
+                SetPedComponentVariation(PlayerPed, 1, SkinMenu.mask, SkinMenu.masksize, 2)
             end
             SkinMenu.masksize = index
         end)
-        RageUI.Progress('頭髮', SkinMenu.hair, (GetNumberOfPedDrawableVariations(ped, 2) - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('頭髮', SkinMenu.hair, (GetNumberOfPedDrawableVariations(PlayerPed, 2) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 2, SkinMenu.hair, SkinMenu.hair2, 2)
+                SetPedComponentVariation(PlayerPed, 2, SkinMenu.hair, SkinMenu.hair2, 2)
             end
             SkinMenu.hair = index
         end)
-        RageUI.Progress('頭髮2', SkinMenu.hair2, (GetNumberOfPedTextureVariations(ped, 2, SkinMenu.hair) - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('頭髮2', SkinMenu.hair2, (GetNumberOfPedTextureVariations(PlayerPed, 2, SkinMenu.hair) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 2, SkinMenu.hair, SkinMenu.hair2, 2)
+                SetPedComponentVariation(PlayerPed, 2, SkinMenu.hair, SkinMenu.hair2, 2)
             end
             SkinMenu.hair2 = index
         end)
         RageUI.Progress('頭髮顏色', SkinMenu.haircolor, (GetNumHairColors()-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHairColor(ped, SkinMenu.haircolor, SkinMenu.haircolor2)
+                SetPedHairColor(PlayerPed, SkinMenu.haircolor, SkinMenu.haircolor2)
             end
             SkinMenu.haircolor = index
         end)
         RageUI.Progress('頭髮顏色2', SkinMenu.haircolor2, (GetNumHairColors()-1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedHairColor(ped, SkinMenu.haircolor, SkinMenu.haircolor2)
+                SetPedHairColor(PlayerPed, SkinMenu.haircolor, SkinMenu.haircolor2)
             end
             SkinMenu.haircolor2 = index
         end)
-        RageUI.Progress('手臂', SkinMenu.arms, (GetNumberOfPedDrawableVariations(ped, 3) - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('手臂', SkinMenu.arms, (GetNumberOfPedDrawableVariations(PlayerPed, 3) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 3, SkinMenu.arms, SkinMenu.armssize, 2)
+                SetPedComponentVariation(PlayerPed, 3, SkinMenu.arms, SkinMenu.armssize, 2)
             end
             SkinMenu.arms = index
         end)
         RageUI.Progress('手臂樣式', SkinMenu.armssize, 10, nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 3, SkinMenu.arms, SkinMenu.armssize, 2)
+                SetPedComponentVariation(PlayerPed, 3, SkinMenu.arms, SkinMenu.armssize, 2)
             end
             SkinMenu.armssize = index
         end)
-        RageUI.Progress('褲子', SkinMenu.pants, (GetNumberOfPedDrawableVariations(ped, 4) - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('褲子', SkinMenu.pants, (GetNumberOfPedDrawableVariations(PlayerPed, 4) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 4, SkinMenu.pants, SkinMenu.pantssize, 2)
+                SetPedComponentVariation(PlayerPed, 4, SkinMenu.pants, SkinMenu.pantssize, 2)
             end
             SkinMenu.pants = index
         end)
-        RageUI.Progress('褲子樣式', SkinMenu.pantssize, (GetNumberOfPedTextureVariations(ped, 4, SkinMenu.pants)), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('褲子樣式', SkinMenu.pantssize, (GetNumberOfPedTextureVariations(PlayerPed, 4, SkinMenu.pants)), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 4, SkinMenu.pants, SkinMenu.pantssize, 2)
+                SetPedComponentVariation(PlayerPed, 4, SkinMenu.pants, SkinMenu.pantssize, 2)
             end
             SkinMenu.pantssize = index
         end)
-        RageUI.Progress('背包', SkinMenu.bags, (GetNumberOfPedDrawableVariations(ped, 5) - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('背包', SkinMenu.bags, (GetNumberOfPedDrawableVariations(PlayerPed, 5) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 5, SkinMenu.bags, SkinMenu.bagssize, 2)
+                SetPedComponentVariation(PlayerPed, 5, SkinMenu.bags, SkinMenu.bagssize, 2)
             end
             SkinMenu.bags = index
         end)
-        RageUI.Progress('背包樣式', SkinMenu.bagssize, (GetNumberOfPedTextureVariations(ped, 5, SkinMenu.bags)), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('背包樣式', SkinMenu.bagssize, (GetNumberOfPedTextureVariations(PlayerPed, 5, SkinMenu.bags)), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 5, SkinMenu.bags, SkinMenu.bagssize, 2)
+                SetPedComponentVariation(PlayerPed, 5, SkinMenu.bags, SkinMenu.bagssize, 2)
             end
             SkinMenu.bagssize = index
         end)
-        RageUI.Progress('鞋子', SkinMenu.shoes, (GetNumberOfPedDrawableVariations(ped, 6) - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('鞋子', SkinMenu.shoes, (GetNumberOfPedDrawableVariations(PlayerPed, 6) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 6, SkinMenu.shoes, SkinMenu.shoessize, 2)
+                SetPedComponentVariation(PlayerPed, 6, SkinMenu.shoes, SkinMenu.shoessize, 2)
             end
             SkinMenu.shoes = index
         end)
-        RageUI.Progress('鞋子樣式', SkinMenu.shoessize, (GetNumberOfPedTextureVariations(ped, 6, SkinMenu.shoes)), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('鞋子樣式', SkinMenu.shoessize, (GetNumberOfPedTextureVariations(PlayerPed, 6, SkinMenu.shoes)), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 6, SkinMenu.shoes, SkinMenu.shoessize, 2)
+                SetPedComponentVariation(PlayerPed, 6, SkinMenu.shoes, SkinMenu.shoessize, 2)
             end
             SkinMenu.shoessize = index
         end)
-        RageUI.Progress('項鍊', SkinMenu.chain, (GetNumberOfPedDrawableVariations(ped, 7) - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('項鍊', SkinMenu.chain, (GetNumberOfPedDrawableVariations(PlayerPed, 7) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 7, SkinMenu.chain, SkinMenu.chainsize, 2)
+                SetPedComponentVariation(PlayerPed, 7, SkinMenu.chain, SkinMenu.chainsize, 2)
             end
             SkinMenu.chain = index
         end)
-        RageUI.Progress('項鍊樣式', SkinMenu.chainsize, (GetNumberOfPedTextureVariations(ped, 7, SkinMenu.chain)), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('項鍊樣式', SkinMenu.chainsize, (GetNumberOfPedTextureVariations(PlayerPed, 7, SkinMenu.chain)), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 7, SkinMenu.chain, SkinMenu.chainsize, 2)
+                SetPedComponentVariation(PlayerPed, 7, SkinMenu.chain, SkinMenu.chainsize, 2)
             end
             SkinMenu.chainsize = index
         end)
-        RageUI.Progress('T-Shirt', SkinMenu.tshirt, (GetNumberOfPedDrawableVariations(ped, 8) - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('T-Shirt', SkinMenu.tshirt, (GetNumberOfPedDrawableVariations(PlayerPed, 8) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 8, SkinMenu.tshirt, SkinMenu.tshirtsize, 2)
+                SetPedComponentVariation(PlayerPed, 8, SkinMenu.tshirt, SkinMenu.tshirtsize, 2)
             end
             SkinMenu.tshirt = index
         end)
-        RageUI.Progress('T-Shirt樣式', SkinMenu.tshirtsize, GetNumberOfPedTextureVariations(ped, 8, SkinMenu.tshirt - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('T-Shirt樣式', SkinMenu.tshirtsize, GetNumberOfPedTextureVariations(PlayerPed, 8, SkinMenu.tshirt - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 8, SkinMenu.tshirt, SkinMenu.tshirtsize, 2)
+                SetPedComponentVariation(PlayerPed, 8, SkinMenu.tshirt, SkinMenu.tshirtsize, 2)
             end
             SkinMenu.tshirtsize = index
         end)
-        RageUI.Progress('防彈背心', SkinMenu.bproof, (GetNumberOfPedDrawableVariations(ped, 9) - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('防彈背心', SkinMenu.bproof, (GetNumberOfPedDrawableVariations(PlayerPed, 9) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 9, SkinMenu.bproof, SkinMenu.bproofsize, 2)
+                SetPedComponentVariation(PlayerPed, 9, SkinMenu.bproof, SkinMenu.bproofsize, 2)
             end
             SkinMenu.bproof = index
         end)
-        RageUI.Progress('防彈背心樣式', SkinMenu.bproofsize, (GetNumberOfPedTextureVariations(ped, 9, SkinMenu.bproof)), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('防彈背心樣式', SkinMenu.bproofsize, (GetNumberOfPedTextureVariations(PlayerPed, 9, SkinMenu.bproof)), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 9, SkinMenu.bproof, SkinMenu.bproofsize, 2)
+                SetPedComponentVariation(PlayerPed, 9, SkinMenu.bproof, SkinMenu.bproofsize, 2)
             end
             SkinMenu.bproofsize = index
         end)
-        RageUI.Progress('徽章', SkinMenu.decals, (GetNumberOfPedDrawableVariations(ped, 10) - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('徽章', SkinMenu.decals, (GetNumberOfPedDrawableVariations(PlayerPed, 10) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 10, SkinMenu.decals, SkinMenu.decalssize, 2)
+                SetPedComponentVariation(PlayerPed, 10, SkinMenu.decals, SkinMenu.decalssize, 2)
             end
             SkinMenu.decals = index
         end)
-        RageUI.Progress('徽章樣式', SkinMenu.decalssize, GetNumberOfPedTextureVariations(ped, 10, SkinMenu.decals - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('徽章樣式', SkinMenu.decalssize, GetNumberOfPedTextureVariations(PlayerPed, 10, SkinMenu.decals - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 10, SkinMenu.decals, SkinMenu.decalssize, 2)
+                SetPedComponentVariation(PlayerPed, 10, SkinMenu.decals, SkinMenu.decalssize, 2)
             end
             SkinMenu.decalssize = index
         end)
-        RageUI.Progress('外衣', SkinMenu.torso, (GetNumberOfPedDrawableVariations(ped, 11) - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('外衣', SkinMenu.torso, (GetNumberOfPedDrawableVariations(PlayerPed, 11) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 11, SkinMenu.torso, SkinMenu.tshirtsize, 2)
+                SetPedComponentVariation(PlayerPed, 11, SkinMenu.torso, SkinMenu.tshirtsize, 2)
             end
             SkinMenu.torso = index
         end)
-        RageUI.Progress('外衣樣式', SkinMenu.torsosize, GetNumberOfPedTextureVariations(ped, 11, SkinMenu.torso - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('外衣樣式', SkinMenu.torsosize, GetNumberOfPedTextureVariations(PlayerPed, 11, SkinMenu.torso - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedComponentVariation(ped, 11, SkinMenu.torso, SkinMenu.torsosize, 2)
+                SetPedComponentVariation(PlayerPed, 11, SkinMenu.torso, SkinMenu.torsosize, 2)
             end
             SkinMenu.torsosize = index
         end)
@@ -529,83 +529,83 @@ end)
 ------------------------------------------------------------
 RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'Other'), nil, function()
     RageUI.IsVisible(RMenu:Get('skinmenu', 'Other'), true, true, true, function()
-        RageUI.Progress('帽子', SkinMenu.helmet, (GetNumberOfPedDrawableVariations(ped, 0) - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('帽子', SkinMenu.helmet, (GetNumberOfPedDrawableVariations(PlayerPed, 0) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 if SkinMenu.helmet == 0 then
-                    ClearPedProp(ped, 0)
+                    ClearPedProp(PlayerPed, 0)
                 else
-                    SetPedPropIndex(ped, 0, SkinMenu.helmet, SkinMenu.helmetsize, 2)
+                    SetPedPropIndex(PlayerPed, 0, SkinMenu.helmet, SkinMenu.helmetsize, 2)
                 end
             end
             SkinMenu.helmet = index
         end)
-        RageUI.Progress('帽子樣式', SkinMenu.helmetsize, (GetNumberOfPedTextureVariations(ped, 0, SkinMenu.helmet)), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('帽子樣式', SkinMenu.helmetsize, (GetNumberOfPedTextureVariations(PlayerPed, 0, SkinMenu.helmet)), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedPropIndex(ped, 0, SkinMenu.helmet, SkinMenu.helmetsize, 2)
+                SetPedPropIndex(PlayerPed, 0, SkinMenu.helmet, SkinMenu.helmetsize, 2)
             end
             SkinMenu.helmetsize = index
         end)
-        RageUI.Progress('眼鏡', SkinMenu.glasses, (GetNumberOfPedDrawableVariations(ped, 1) - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('眼鏡', SkinMenu.glasses, (GetNumberOfPedDrawableVariations(PlayerPed, 1) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 if SkinMenu.glasses == 0 then
-                    ClearPedProp(ped, 1)
+                    ClearPedProp(PlayerPed, 1)
                 else
-                    SetPedPropIndex(ped, 1, SkinMenu.glasses, SkinMenu.glassessize, 2)
+                    SetPedPropIndex(PlayerPed, 1, SkinMenu.glasses, SkinMenu.glassessize, 2)
                 end
             end
             SkinMenu.glasses = index
         end)
-        RageUI.Progress('眼鏡樣式', SkinMenu.glassessize, (GetNumberOfPedTextureVariations(ped, 1, SkinMenu.glasses)), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('眼鏡樣式', SkinMenu.glassessize, (GetNumberOfPedTextureVariations(PlayerPed, 1, SkinMenu.glasses)), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedPropIndex(ped, 1, SkinMenu.glasses, SkinMenu.glassessize, 2)
+                SetPedPropIndex(PlayerPed, 1, SkinMenu.glasses, SkinMenu.glassessize, 2)
             end
             SkinMenu.glassessize = index
         end)
-        RageUI.Progress('耳飾', SkinMenu.ears, (GetNumberOfPedPropDrawableVariations(ped, 2) - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('耳飾', SkinMenu.ears, (GetNumberOfPedPropDrawableVariations(PlayerPed, 2) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 if SkinMenu.ears == 0 then
-                    ClearPedProp(ped, 2)
+                    ClearPedProp(PlayerPed, 2)
                 else
-                    SetPedPropIndex(ped, 2, SkinMenu.ears, SkinMenu.esarssize, 2)
+                    SetPedPropIndex(PlayerPed, 2, SkinMenu.ears, SkinMenu.esarssize, 2)
                 end
             end
             SkinMenu.ears = index
         end)
-        RageUI.Progress('耳飾樣式', SkinMenu.esarssize, GetNumberOfPedPropTextureVariations(ped, 2, SkinMenu.ears - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('耳飾樣式', SkinMenu.esarssize, GetNumberOfPedPropTextureVariations(PlayerPed, 2, SkinMenu.ears - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedPropIndex(ped, 2, SkinMenu.ears, SkinMenu.esarssize, 2)
+                SetPedPropIndex(PlayerPed, 2, SkinMenu.ears, SkinMenu.esarssize, 2)
             end
             SkinMenu.esarssize = index
         end)
-        RageUI.Progress('手錶', SkinMenu.watches, (GetNumberOfPedDrawableVariations(ped, 6) - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('手錶', SkinMenu.watches, (GetNumberOfPedDrawableVariations(PlayerPed, 6) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 if SkinMenu.watches == 0 then
-                    ClearPedProp(ped, 6)
+                    ClearPedProp(PlayerPed, 6)
                 else
-                    SetPedPropIndex(ped, 6, SkinMenu.watches, SkinMenu.watchessize, 2)
+                    SetPedPropIndex(PlayerPed, 6, SkinMenu.watches, SkinMenu.watchessize, 2)
                 end
             end
             SkinMenu.watches = index
         end)
-        RageUI.Progress('手錶樣式', SkinMenu.watchessize, (GetNumberOfPedTextureVariations(ped, 6, SkinMenu.watches)), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('手錶樣式', SkinMenu.watchessize, (GetNumberOfPedTextureVariations(PlayerPed, 6, SkinMenu.watches)), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedPropIndex(ped, 6, SkinMenu.watches, SkinMenu.watchessize, 2)
+                SetPedPropIndex(PlayerPed, 6, SkinMenu.watches, SkinMenu.watchessize, 2)
             end
             SkinMenu.watchessize = index
         end)
-        RageUI.Progress('手鐲', SkinMenu.bracelets, (GetNumberOfPedDrawableVariations(ped, 7) - 1), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('手鐲', SkinMenu.bracelets, (GetNumberOfPedDrawableVariations(PlayerPed, 7) - 1), nil, true, true, function(hovered, active, selected, index)
             if active then
                 if SkinMenu.bracelets == 0 then
-                    ClearPedProp(ped, 7)
+                    ClearPedProp(PlayerPed, 7)
                 else
-                    SetPedPropIndex(ped, 7, SkinMenu.bracelets, SkinMenu.braceletssize, 2)
+                    SetPedPropIndex(PlayerPed, 7, SkinMenu.bracelets, SkinMenu.braceletssize, 2)
                 end
             end
             SkinMenu.bracelets = index
         end)
-        RageUI.Progress('手鐲樣式', SkinMenu.braceletssize, (GetNumberOfPedTextureVariations(ped, 7, SkinMenu.bracelets)), nil, true, true, function(hovered, active, selected, index)
+        RageUI.Progress('手鐲樣式', SkinMenu.braceletssize, (GetNumberOfPedTextureVariations(PlayerPed, 7, SkinMenu.bracelets)), nil, true, true, function(hovered, active, selected, index)
             if active then
-                SetPedPropIndex(ped, 7, SkinMenu.bracelets, SkinMenu.braceletssize, 2)
+                SetPedPropIndex(PlayerPed, 7, SkinMenu.bracelets, SkinMenu.braceletssize, 2)
             end
             SkinMenu.braceletssize = index
         end)
@@ -636,7 +636,7 @@ RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'main'), nil, function()
         end, RMenu:Get('skinmenu', 'Other'))
         RageUI.Button("保存外觀", nil, {}, true, function(hovered, active, selected)
             if selected then
-                TriggerEvent('ARP:SkinSave')
+                TriggerEvent('ARP_Core:SkinSave')
                 RageUI.CloseAll()
                 DeleteSkinCam()
             end
@@ -700,8 +700,8 @@ end)
 ------------------------------------------------------------
 -- 保存外觀
 ------------------------------------------------------------
-RegisterNetEvent('ARP:SkinSave')
-AddEventHandler('ARP:SkinSave', function()  
+RegisterNetEvent('ARP_Core:SkinSave')
+AddEventHandler('ARP_Core:SkinSave', function()  
     local playerskin = {}
     local skin = {
         SkinMenu.sex,
@@ -781,14 +781,14 @@ AddEventHandler('ARP:SkinSave', function()
         table.insert(playerskin, skin[i])
     end  
 
-    TriggerServerEvent('ARP:SavePlayerSkin', playerskin)
+    TriggerServerEvent('ARP_Core:SavePlayerSkin', playerskin)
 end)
 
 ------------------------------------------------------------
 -- 外觀讀取/設置
 ------------------------------------------------------------
-RegisterNetEvent('ARP:SetPlayerSkin')
-AddEventHandler('ARP:SetPlayerSkin', function(pedskin)
+RegisterNetEvent('ARP_Core:SetPlayerSkin')
+AddEventHandler('ARP_Core:SetPlayerSkin', function(pedskin)
     Citizen.Wait(1000)
     if pedskin[1] == 1 then
         defaultModel = GetHashKey('mp_m_freemode_01')

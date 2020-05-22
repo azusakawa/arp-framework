@@ -12,7 +12,7 @@ RegisterCommand("dv", function()
 
             if (GetPedInVehicleSeat(vehicle, -1) == ped) then 
                 local plate = GetVehicleNumberPlateText(vehicle)
-                TriggerServerEvent('ARP:UpdateVehicleStatu', plate)
+                TriggerServerEvent('ARP_Core:UpdateVehicleStatu', plate)
                 DeleteEntity(vehicle)
                 ARP.Notify("車輛已~g~成功~s~拖吊!")
             else 
