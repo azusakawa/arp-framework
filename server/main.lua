@@ -80,7 +80,7 @@ end)
 -- 版本確認
 ------------------------------------------------------------
 PerformHttpRequest('https://raw.githubusercontent.com/azusakawa/arp-framework/master/fxmanifest.lua', function (errorCode, result, headers)
-    local version = GetResourceMetadata(GetCurrentResourceName(), 'resource_version', 0)
+    local version = GetResourceMetadata(GetCurrentResourceName(), 'version', 0)
 
     if string.find(tostring(result), version) == nil then
         print('\n[arp-framework] 當前版本過舊請更新版本')
