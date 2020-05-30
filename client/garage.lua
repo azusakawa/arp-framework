@@ -69,7 +69,7 @@ local garagepos = {
     Spanish_Ave = {
         Name = 'SpanishAve',
         Marker = vector3(68.13, 13.2, 68.21),
-        Spawn = vector3(72.21, 13.07, 68.91),
+        Spawn = vector3(72.21, 13.07, 67.91),
         Delete = vector3(73.87, 23.55, 68.3),
         Heading = 156.76
     },
