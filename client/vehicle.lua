@@ -80,7 +80,7 @@ function BuyVehicle(model, label)
         table.insert(vehmodel, models[i])
     end
     
-    ARP.Notify('你~g~購買~s~了一輛' .. label .. '，車牌號碼: ' .. plate)
+    ARP.Notify('你~r~購買~s~了一輛~b~' .. label .. '~s~，車牌號碼: ~g~' .. plate)
     TriggerServerEvent('ARP_Core:SetVehicleToPlayer', GetVehicleNumberPlateText(PlayerVeh), vehmodel)
 end
 

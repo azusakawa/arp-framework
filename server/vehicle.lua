@@ -4,7 +4,7 @@
 RegisterServerEvent('ARP_Core:LoadVehicles')
 AddEventHandler('ARP_Core:LoadVehicles', function()
     local source = source
-    exports.ghmattimysql:scalar('SELECT * FROM arp_vehicles', {}, function(result)
+    exports.ghmattimysql:execute('SELECT * FROM arp_vehicles', {}, function(result)
         if result then
             for k, v in ipairs(result) do 
                 TriggerClientEvent('ARP_Core:VehicleMenu', source, v.model, v.label, v.price)
