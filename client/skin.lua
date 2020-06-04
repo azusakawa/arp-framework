@@ -1,7 +1,7 @@
 -----------------------------------------------------------
 -- 外觀選單
 ------------------------------------------------------------
-RMenu.Add('skinmenu', 'main', RageUI.CreateMenu('服飾店', '外觀選單'))
+RMenu.Add('skinmenu', 'pedskin', RageUI.CreateMenu('服飾店', '外觀選單'))
 RMenu.Add('skinmenu', 'Skin', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), '膚色', nil))
 RMenu.Add('skinmenu', 'Face', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), '身軀外觀', nil))
 RMenu.Add('skinmenu', 'Body', RageUI.CreateSubMenu(RMenu:Get('skinmenu', 'main'), '服裝儀容', nil))
@@ -616,8 +616,8 @@ end)
 ------------------------------------------------------------
 -- 選單
 ------------------------------------------------------------
-RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'main'), nil, function()
-    RageUI.IsVisible(RMenu:Get('skinmenu', 'main'), true, true, true, function()
+RageUI.CreateWhile(1.0, RMenu:Get('skinmenu', 'pedskin'), nil, function()
+    RageUI.IsVisible(RMenu:Get('skinmenu', 'pedskin'), true, true, true, function()
         RageUI.Button("膚色 & 性別", nil, {RightLabel = "→"}, true, function(hovered, active, selected)
             if selected then
             end

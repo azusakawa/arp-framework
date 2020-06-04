@@ -126,16 +126,16 @@ end)
 ------------------------------------------------------------
 -- 車輛選單
 ------------------------------------------------------------
-RMenu.Add('Garagemenu', 'main', RageUI.CreateMenu('車庫', '車庫選單'))
-RMenu.Add('Poundmenu', 'main', RageUI.CreateMenu('扣押場', '扣押場選單'))
+RMenu.Add('Garagemenu', 'garage', RageUI.CreateMenu('車庫', '車庫選單'))
+RMenu.Add('Poundmenu', 'pound', RageUI.CreateMenu('扣押場', '扣押場選單'))
 local GarageMenu = {
     action = {
         '駕駛'
     },
 }
 
-RageUI.CreateWhile(1.0, RMenu:Get('Garagemenu', 'main'), nil, function()
-    RageUI.IsVisible(RMenu:Get('Garagemenu', 'main'), true, true, true, function()
+RageUI.CreateWhile(1.0, RMenu:Get('Garagemenu', 'garage'), nil, function()
+    RageUI.IsVisible(RMenu:Get('Garagemenu', 'garage'), true, true, true, function()
         for k, v in pairs(garage) do 
             RageUI.List(v.plate, GarageMenu.action, 1, nil, {}, true, function(hovered, active, selected, index)
                 if selected then
@@ -149,8 +149,8 @@ RageUI.CreateWhile(1.0, RMenu:Get('Garagemenu', 'main'), nil, function()
     end)
 end)
 
-RageUI.CreateWhile(1.0, RMenu:Get('Poundmenu', 'main'), nil, function()
-    RageUI.IsVisible(RMenu:Get('Poundmenu', 'main'), true, true, true, function()
+RageUI.CreateWhile(1.0, RMenu:Get('Poundmenu', 'pound'), nil, function()
+    RageUI.IsVisible(RMenu:Get('Poundmenu', 'pound'), true, true, true, function()
         for k, v in pairs(garage) do 
             RageUI.List(v.plate, GarageMenu.action, 1, nil, {}, true, function(hovered, active, selected, index)
                 if selected then
